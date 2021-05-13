@@ -13,5 +13,5 @@ deploy:
   provider: heroku
     app: qc-engine
   on:
-    repo: github/Quick-Command/qc-engine
+    repo: Quick-Command/qc-engine
   run: rails db:migrate
