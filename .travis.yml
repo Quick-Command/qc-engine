@@ -9,8 +9,8 @@ before_install:
 script:
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rake db:schema:load
-- bundle exec rspec
 - bundle exec rake csv_load:all
+- bundle exec rspec
 deploy:
   provider: heroku
   api_key:
@@ -21,3 +21,5 @@ deploy:
     branch: main
     run: rails db:migrate
     skip_cleanup: 'true'
+after_deploy:
+  - bundle exec rake csv_load:all
