@@ -10,7 +10,7 @@ script:
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rails db:{create,migrate} RAILS_ENV=development
 - bundle exec rspec
-- rake csv_load:all
+- bundle exec rake csv_load:all
 deploy:
   provider: heroku
   api_key:
