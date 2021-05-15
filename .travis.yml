@@ -9,6 +9,7 @@ before_install:
 script:
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rails db:{create,migrate} RAILS_ENV=development
+- bundle exec rake db:schema:load
 - bundle exec rspec
 - bundle exec rake csv_load:all
 deploy:
