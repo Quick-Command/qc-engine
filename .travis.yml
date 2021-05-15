@@ -16,4 +16,5 @@ deploy:
   app: qc-engine
   on:
     repo: Quick-Command/qc-engine
+    branch: main 
     run: rails db:migrate
