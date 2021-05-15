@@ -19,5 +19,5 @@ deploy:
   on:
     repo: Quick-Command/qc-engine
     branch: main
-    run: rails db:migrate, rake csv_load:all
+    run: rails db:migrate
     skip_cleanup: 'true'
