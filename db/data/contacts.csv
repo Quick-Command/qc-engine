@@ -1,51 +1,51 @@
-id,name,email,phone_number
-1,Aaron Marks,AMarks@emailgov.com, (221)830-7361
-2,Aly Snow,ASnow@emailgov.com, (485)062-4319
-3,Brian Blue,BBlue@emailgov.com, (852)148-9979
-4,Brie Button,BButton@emailgov.com, (672)832-4790
-5,Carrie Washington,CWashington@emailgov.com, (782)602-3793
-6,Carl Jr,CJr@emailgov.com, (366)338-9913
-7,Desmond More,DMore@emailgov.com, (563)460-0876
-8,Diane Furr,DFurr@emailgov.com, (227)860-8382
-9,Eugene Maroon,EMaroon@emailgov.com, (721)386-6969
-10,Eliza Berry,EBerry@emailgov.com, (326)520-9201
-11,Fran Moore,FMoore@emailgov.com, (437)750-2732
-12,Ferdanand Meels,FMeels@emailgov.com, (964)112-8423
-13,Greg Lots,GLots@emailgov.com, (153)303-2619
-14,Gretta Goul,GGoul@emailgov.com, (268)184-6110
-15,Henry Luckrus,HLuckrus@emailgov.com, (984)438-2014
-16,Hillary Swank,HSwank@emailgov.com, (278)967-2445
-17,Iggy Leaf,ILeaf@emailgov.com, (258)003-5217
-18,Ian Douglas,IDouglas@emailgov.com, (295)736-5989
-19,Jackie O,JO@emailgov.com, (307)518-5264
-20,Jake Jillinhall,JJillinhall@emailgov.com, (298)995-0973
-21,Kate Blanchet,KBlanchet@emailgov.com, (251)405-7919
-22,Krip Tonite,KTonite@emailgov.com, (845)913-6469
-23,Lisa Smooth,LSmooth@emailgov.com, (281)551-6180
-24,Lance Legstrong,LLegstrong@emailgov.com, (436)552-3614
-25,Mallory Smart,MSmart@emailgov.com, (698)911-0613
-26,Mike Moon,MMoon@emailgov.com, (651)563-1511
-27,Neil Buttstrong,NButtstrong@emailgov.com, (220)609-0224
-28,Nancy Megan,NMegan@emailgov.com, (972)763-9386
-29,Octopus Legs,OLegs@emailgov.com, (861)474-4741
-30,Olive Martini,OMartini@emailgov.com, (665)868-1711
-31,Patty Manonise ,PManonise @emailgov.com, (931)424-7760
-32,Patrick Clover,PClover@emailgov.com, (149)775-6018
-33,Quinn Finn,QFinn@emailgov.com, (740)636-5901
-34,Qunicy Jones,QJones@emailgov.com, (914)512-3873
-35,Rita Ora,ROra@emailgov.com, (526)866-8447
-36,Ricky Ricardo,RRicardo@emailgov.com, (615)794-7402
-37,Stuart Lil,SLil@emailgov.com, (106)294-4515
-38,Sally Ride,SRide@emailgov.com, (549)237-8815
-39,Tom Segura,TSegura@emailgov.com, (751)330-6399
-40,Tonya Softing,TSofting@emailgov.com, (542)711-1169
-41,Ulyses Old,UOld@emailgov.com, (949)293-0458
-42,Umpty Dumpty,UDumpty@emailgov.com, (847)830-7298
-43,Vivian Wins,VWins@emailgov.com, (435)770-2957
-44,Victor Loses,VLoses@emailgov.com, (427)982-1921
-45,Winston Bishop,WBishop@emailgov.com, (799)843-6147
-46,Wynona Wine,WWine@emailgov.com, (742)775-8041
-47,Yannis Yannis,YYannis@emailgov.com, (256)821-1514
-48,Yarlene Smith,YSmith@emailgov.com, (599)988-1721
-49,Zane Bane,ZBane@emailgov.com, (392)326-2232
-50,Zeen Been,ZBeen@emailgov.com, (663)655-0832
+id,name,email,phone_number,job_title
+1,Aaron Marks,AMarks@emailgov.com, (221)830-7361,City Manager
+2,Aly Snow,ASnow@emailgov.com, (485)062-4319,Assistant City Manager
+3,Brian Blue,BBlue@emailgov.com, (852)148-9979,City Attorney
+4,Brie Button,BButton@emailgov.com, (672)832-4790,Finance Director
+5,Carrie Washington,CWashington@emailgov.com, (782)602-3793,Police Chief
+6,Carl Jr,CJr@emailgov.com, (366)338-9913,Fire Chief
+7,Desmond More,DMore@emailgov.com, (563)460-0876,Public Works Director
+8,Diane Furr,DFurr@emailgov.com, (227)860-8382,Planning Director
+9,Eugene Maroon,EMaroon@emailgov.com, (721)386-6969,Economic Developer Director
+10,Eliza Berry,EBerry@emailgov.com, (326)520-9201,Parks and Recreation Director
+11,Fran Moore,FMoore@emailgov.com, (437)750-2732,Public Policy Management
+12,Ferdanand Meels,FMeels@emailgov.com, (964)112-8423,Public Safety and Homeland Security
+13,Greg Lots,GLots@emailgov.com, (153)303-2619,Transportation and Infrastructure Management
+14,Gretta Goul,GGoul@emailgov.com, (268)184-6110,Transportation Planner
+15,Henry Luckrus,HLuckrus@emailgov.com, (984)438-2014,Urban Planner
+16,Hillary Swank,HSwank@emailgov.com, (278)967-2445,Urban Planner
+17,Iggy Leaf,ILeaf@emailgov.com, (258)003-5217,Civil Engineer
+18,Ian Douglas,IDouglas@emailgov.com, (295)736-5989,Fire Fighter
+19,Jackie O,JO@emailgov.com, (307)518-5264,Finance Analyst
+20,Jake Jillinhall,JJillinhall@emailgov.com, (298)995-0973,Account Manager
+21,Kate Blanchet,KBlanchet@emailgov.com, (251)405-7919,Accountant
+22,Krip Tonite,KTonite@emailgov.com, (845)913-6469,Administrative Assistant
+23,Lisa Smooth,LSmooth@emailgov.com, (281)551-6180,Office Manager
+24,Lance Legstrong,LLegstrong@emailgov.com, (436)552-3614,Animal Control 
+25,Mallory Smart,MSmart@emailgov.com, (698)911-0613,Animal Control 
+26,Mike Moon,MMoon@emailgov.com, (651)563-1511,Associate Planner
+27,Neil Buttstrong,NButtstrong@emailgov.com, (220)609-0224,Building Inspector
+28,Nancy Megan,NMegan@emailgov.com, (972)763-9386,Public Works Superintendent
+29,Octopus Legs,OLegs@emailgov.com, (861)474-4741,Asst Public Works Superintendent
+30,Olive Martini,OMartini@emailgov.com, (665)868-1711,City Clerk
+31,Patty Manonise ,PManonise @emailgov.com, (931)424-7760,City Clerk
+32,Patrick Clover,PClover@emailgov.com, (149)775-6018,City Clerk
+33,Quinn Finn,QFinn@emailgov.com, (740)636-5901,Contract Specialist
+34,Qunicy Jones,QJones@emailgov.com, (914)512-3873,Control Operator
+35,Rita Ora,ROra@emailgov.com, (526)866-8447,County Engineer
+36,Ricky Ricardo,RRicardo@emailgov.com, (615)794-7402,Field Supervisor
+37,Stuart Lil,SLil@emailgov.com, (106)294-4515,Fire Inspector
+38,Sally Ride,SRide@emailgov.com, (549)237-8815,Firefighter paramedic
+39,Tom Segura,TSegura@emailgov.com, (751)330-6399,IT Manager
+40,Tonya Softing,TSofting@emailgov.com, (542)711-1169,IT Project Manager
+41,Ulyses Old,UOld@emailgov.com, (949)293-0458,IT Service Desk Clerk
+42,Umpty Dumpty,UDumpty@emailgov.com, (847)830-7298,IT Service Desk Manager
+43,Vivian Wins,VWins@emailgov.com, (435)770-2957,Library Director
+44,Victor Loses,VLoses@emailgov.com, (427)982-1921,Library Supervisor
+45,Winston Bishop,WBishop@emailgov.com, (799)843-6147,Municipal Court Judge
+46,Wynona Wine,WWine@emailgov.com, (742)775-8041,Payroll 
+47,Yannis Yannis,YYannis@emailgov.com, (256)821-1514,Police Commander
+48,Yarlene Smith,YSmith@emailgov.com, (599)988-1721,Police Dispatcher
+49,Zane Bane,ZBane@emailgov.com, (392)326-2232,Police Officer
+50,Zeen Been,ZBeen@emailgov.com, (663)655-0832,Urban Forester
