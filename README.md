@@ -224,7 +224,7 @@ The following is a depiction of our Database Schema
 
 ## Versioning
 - Ruby 2.5.3
-- Rails 5.2.5
+- Rails 5.2.6
 
 ## Authors
 - **Alexa Morales Smyth**
