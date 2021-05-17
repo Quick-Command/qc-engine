@@ -1,5 +1,5 @@
 id,name,incident_type,description,location,start_date,active,closed_date
-1,October 2011 2.0 earthquake,earthquake,"2.0 earthquake, facade damage to some buildings, 10 trees fell",,2020-01-10,FALSE,2020-11-05
+1,October 2011 2.0 earthquake,Earthquake,"2.0 earthquake, facade damage to some buildings, 10 trees fell",City Proper,2020-01-10,FALSE,2020-11-05
 2,Bear Creek Park Oil Spill,Hazmat Spill,Exxon manufacturing plant oil spill affected 500 sf,Bear Creek Park,2020-02-10,FALSE,2020-05-20
 3,Barker Distribution Substation - tree fall,Power Outage,"Tree feel on power grid, causing outage for 100 homes for 7 hours",Barker Distribution Substation,2020-03-10,FALSE,2020-03-20
 4,Del Camino - Rolling Blackout,Power Outage,Outage for 1000 homes for 10 hours,Del Camino ,2020-04-10,FALSE,2020-05-10
@@ -25,6 +25,6 @@ id,name,incident_type,description,location,start_date,active,closed_date
 24,tractor trailer,Accident,Details in police report #PR097723781,W COLFAX AVE / N IRVING ST,2020-07-10,FALSE,2020-08-09
 25,1 car accident,Accident,Details in police report #PR097732671,N SPEER BLVD / ELITCH CIR,2020-08-10,FALSE,2020-09-09
 26,5 car accident,Accident,Details in police report #PR0977237619,W 6TH AVE / N PERRY ST,2020-09-10,FALSE,2020-10-10
-27,Jim Creek Fire,Fire,2 alarm fire caused campfire embers,,2020-10-10,TRUE,
+27,Jim Creek Fire,Fire,2 alarm fire caused campfire embers,Jim Creek Trail,2020-10-10,TRUE,
 28,Avery Substation - Summer black out,Power Outage,Outage for 12893 homes for 19 hours,Avery Substation,2020-11-10,TRUE,
 29,5 car accident,Accident,Details in police report #PR097134834,2400 BLOCK W COLFAX AVE,2020-12-10,TRUE,
