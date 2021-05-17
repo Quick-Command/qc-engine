@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :incident do
-    name { "MyString" }
+    name { "Camp Fire" }
     active { false }
-    type { "" }
+    type { "Fire" }
     description { "MyString" }
     location { "MyString" }
-    start_date { "2021-05-16 12:22:48" }
-    closed_date { "2021-05-16 12:22:48" }
+    start_date { "2021-05-01 12:22:48" }
+    closed_date { "2021-05-2 12:22:48" }
   end
 end
