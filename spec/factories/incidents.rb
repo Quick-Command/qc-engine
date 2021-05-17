@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :incident do
     name { "Camp Fire" }
-    active { false }
-    type { "Fire" }
-    description { "MyString" }
-    location { "MyString" }
+    active { [true, false].sample }
+    incident_type { ["Fire", "Accident", "Earthquake", "Hazmat Spill", "Power Outage"].sample }
+    description { "This is a description of the incident" }
+    location { "Denver, CO" }
     start_date { "2021-05-01 12:22:48" }
     closed_date { "2021-05-2 12:22:48" }
   end
