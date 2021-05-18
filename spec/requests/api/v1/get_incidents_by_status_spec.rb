@@ -5,7 +5,7 @@ RSpec.describe "Incident by Status" do
     it "happy path" do
       create_list(:incident, 10, active: true)
 
-      get "/api/v1/incidents?open=true"
+      get "/api/v1/incidents?active=true"
       result = JSON.parse(response.body, symbolize_names: true)
       result = JSON.parse(response.body, symbolize_names: true)
 
