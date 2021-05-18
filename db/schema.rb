@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_05_16_162248) do
     t.string "description"
     t.string "location"
     t.datetime "start_date"
-    t.datetime "closed_date"
+    t.datetime "close_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

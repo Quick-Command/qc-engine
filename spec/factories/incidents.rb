@@ -6,6 +6,6 @@ FactoryBot.define do
     description { "This is a description of the incident" }
     location { "Denver, CO" }
     start_date { "2021-05-01 12:22:48" }
-    closed_date { "2021-05-2 12:22:48" }
+    close_date { "2021-05-2 12:22:48" }
   end
 end

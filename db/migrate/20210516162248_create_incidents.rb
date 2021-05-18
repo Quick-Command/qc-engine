@@ -7,7 +7,7 @@ class CreateIncidents < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :location
       t.datetime :start_date
-      t.datetime :closed_date
+      t.datetime :close_date
 
       t.timestamps
     end
