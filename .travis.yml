@@ -9,7 +9,7 @@ before_install:
 script:
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rake db:schema:load
-- bundle exec rake csv_load:all
+- bundle exec rake db:test:prepare
 - bundle exec rspec
 deploy:
   provider: heroku
@@ -19,7 +19,7 @@ deploy:
   on:
     repo: Quick-Command/qc-engine
     branch: main
-    run: rails db:migrate
+    run:
+      - "rails db:migrate"
+      - "rake csv_load:all"
     skip_cleanup: 'true'
-after_deploy:
-  - bundle exec rake csv_load:all

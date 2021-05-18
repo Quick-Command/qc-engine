@@ -62,8 +62,8 @@ The following is a depiction of our Database Schema
 ​
 | HTTP verbs | Paths  | Used for | Output |
 | ---------- | ------ | -------- | ------:|
-| GET | /api/v1/incidents?open=true | Get open incidents | [json](#open-incidents) |
-| GET | /api/v1/incidents?open=false | Get resolved incidents | [json](#resolved-incidents) |
+| GET | /api/v1/incidents?active=true | Get active incidents | [json](#active-incidents) |
+| GET | /api/v1/incidents?active=false | Get resolved incidents | [json](#resolved-incidents) |
 | GET | /api/v1/incidents/:incident_id  | Get an incident's details | [json](#incident-details) |
 | PUT | /api/v1/incidents/:incident_id  | Update an incident's details | [json](#incident-details) |
 | GET | /api/v1/incidents/:incident_id/contacts  | Get an incident's contacts and role in incident | [json](#incident-contacts) |
@@ -74,8 +74,7 @@ The following is a depiction of our Database Schema
 | PUT | /api/v1/contacts/:contact_id  | Update a contact's details | [json](#update-contact) |
 | GET | /api/v1/contacts?name=NAME  | Return contacts that match name query | [json](#search-contacts-name) |
 | GET | /api/v1/contacts?role=ROLE  | Return contacts that match role query | [json](#search-contact-role) |
-| GET | /api/v1/contacts?role=ROLE  | Return contacts that match role query | [json](#search-contact-role) |
-​
+
 ## Types of Incidents (an incident can be one type)
 - Fire
 - Accident
@@ -95,74 +94,124 @@ The following is a depiction of our Database Schema
 ​
 ## JSON Responses
 ​
-## Open Incidents
-`GET /api/v1/incidents?open=true`
+## Active Incidents
+`GET /api/v1/incidents?active=true`
   ```json
-  {
-    "data": [
-      {
-        "id": "1",
-          "type": "incident",
-          "attributes": {
-            "name": "Jim Creek Fire",
-            "type": "Fire",
-            "status": "open",
-            "description": "Large fire at Jim's",
-            "location": "Jim's Creek park",
-            "start_date": "2021-01-01",
-            "close_date": ""
+    {
+      "data": [
+          {
+              "id": "27",
+              "type": "incident",
+              "attributes": {
+                  "name": "Jim Creek Fire",
+                  "active": true,
+                  "incident_type": "Fire",
+                  "description": "2 alarm fire caused campfire embers",
+                  "location": "Jim Creek Trail",
+                  "start_date": "2020-10-10T00:00:00.000Z",
+                  "close_date": null
+              }
+          },
+          {
+              "id": "28",
+              "type": "incident",
+              "attributes": {
+                  "name": "Avery Substation - Summer black out",
+                  "active": true,
+                  "incident_type": "Power Outage",
+                  "description": "Outage for 12893 homes for 19 hours",
+                  "location": "Avery Substation",
+                  "start_date": "2020-11-10T00:00:00.000Z",
+                  "close_date": null
+              }
+          },
+          {
+              "id": "29",
+              "type": "incident",
+              "attributes": {
+                  "name": "5 car accident",
+                  "active": true,
+                  "incident_type": "Accident",
+                  "description": "Details in police report #PR097134834",
+                  "location": "2400 BLOCK W COLFAX AVE",
+                  "start_date": "2020-12-10T00:00:00.000Z",
+                  "close_date": null
+              }
           }
-      },
-      {
-        "id": "2",
-          "type": "incident",
-          "attributes": {
-            "name": "Zoo Accident",
-            "type": "Accident",
-            "status": "open",
-            "description": "The animals have escaped!",
-            "location": "The Denver Zoo",
-            "start_date": "2021-05-01",
-            "close_date": ""
-          }
-      }
-    ]
+      ]
   }
   ```
-​
+
 ## Resolved Incidents
-`GET /api/v1/incidents?open=false`
+`GET /api/v1/incidents?active=false`
   ```json
-  {
-    "data": [
-      {
-        "id": "1",
-          "type": "incident",
-          "attributes": {
-            "name": "Jim Creek Fire",
-            "type": "Fire",
-            "status": "resolved",
-            "description": "Large fire at Jim's",
-            "location": "Jim's Creek park",
-            "start_date": "2021-01-01",
-            "close_date": "2021-05-13"
-          }
-      },
-      {
-        "id": "2",
-          "type": "incident",
-          "attributes": {
-            "name": "Zoo Accident",
-            "type": "Accident",
-            "status": "resolved",
-            "description": "The animals have escaped!",
-            "location": "The Denver Zoo",
-            "start_date": "2021-05-01",
-            "close_date": "2021-05-13"
-          }
-      }
-    ]
-  }
+  "data": [
+        {
+            "id": "1",
+            "type": "incident",
+            "attributes": {
+                "name": "October 2011 2.0 earthquake",
+                "active": false,
+                "incident_type": "Earthquake",
+                "description": "2.0 earthquake, facade damage to some buildings, 10 trees fell",
+                "location": "City Proper",
+                "start_date": "2020-01-10T00:00:00.000Z",
+                "close_date": "2020-11-05T00:00:00.000Z"
+            }
+        },
+        {
+            "id": "2",
+            "type": "incident",
+            "attributes": {
+                "name": "Bear Creek Park Oil Spill",
+                "active": false,
+                "incident_type": "Hazmat Spill",
+                "description": "Exxon manufacturing plant oil spill affected 500 sf",
+                "location": "Bear Creek Park",
+                "start_date": "2020-02-10T00:00:00.000Z",
+                "close_date": "2020-05-20T00:00:00.000Z"
+            }
+        },
+        {
+            "id": "3",
+            "type": "incident",
+            "attributes": {
+                "name": "Barker Distribution Substation - tree fall",
+                "active": false,
+                "incident_type": "Power Outage",
+                "description": "Tree feel on power grid, causing outage for 100 homes for 7 hours",
+                "location": "Barker Distribution Substation",
+                "start_date": "2020-03-10T00:00:00.000Z",
+                "close_date": "2020-03-20T00:00:00.000Z"
+            }
+        },
+        {
+            "id": "4",
+            "type": "incident",
+            "attributes": {
+                "name": "Del Camino - Rolling Blackout",
+                "active": false,
+                "incident_type": "Power Outage",
+                "description": "Outage for 1000 homes for 10 hours",
+                "location": "Del Camino ",
+                "start_date": "2020-04-10T00:00:00.000Z",
+                "close_date": "2020-05-10T00:00:00.000Z"
+            }
+        },
+        {
+            "id": "5",
+            "type": "incident",
+            "attributes": {
+                "name": "Desert Cove Fountain Valley Midway - Rolling blackout",
+                "active": false,
+                "incident_type": "Power Outage",
+                "description": "Outage for 1000 homes for under 1 hour",
+                "location": "Desert Cove Fountain Valley Midway",
+                "start_date": "2020-05-10T00:00:00.000Z",
+                "close_date": "2020-08-08T00:00:00.000Z"
+            }
+        }
+      ]
   ```
 ​
 ## Incident Details

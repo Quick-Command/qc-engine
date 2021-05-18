@@ -13,10 +13,16 @@ namespace :csv_load do
 
   task all: :environment do
     build("./db/data/contacts.csv", Contact)
+    build("./db/data/incidents.csv", Incident)
   end
 
   desc "TODO"
   task contacts: :environment do
     build("./db/data/contacts.csv", Contact)
+  end
+
+  desc "TODO"
+  task incidents: :environment do
+    build("./db/data/incidents.csv", Incident)
   end
 end

@@ -1,0 +1,30 @@
+id,name,incident_type,description,location,start_date,active,close_date
+1,October 2011 2.0 earthquake,Earthquake,"2.0 earthquake, facade damage to some buildings, 10 trees fell",City Proper,2020-01-10,FALSE,2020-11-05
+2,Bear Creek Park Oil Spill,Hazmat Spill,Exxon manufacturing plant oil spill affected 500 sf,Bear Creek Park,2020-02-10,FALSE,2020-05-20
+3,Barker Distribution Substation - tree fall,Power Outage,"Tree feel on power grid, causing outage for 100 homes for 7 hours",Barker Distribution Substation,2020-03-10,FALSE,2020-03-20
+4,Del Camino - Rolling Blackout,Power Outage,Outage for 1000 homes for 10 hours,Del Camino ,2020-04-10,FALSE,2020-05-10
+5,Desert Cove Fountain Valley Midway - Rolling blackout,Power Outage,Outage for 1000 homes for under 1 hour,Desert Cove Fountain Valley Midway,2020-05-10,FALSE,2020-08-08
+6,Hogback Ranch Substation - Grid down,Power Outage,Outage for 567 homes for under 1 hour,Hogback Ranch Substation,2020-06-10,FALSE,2020-08-29
+7,Pueblo West Distribution - Fallen grid,Power Outage,Outage for 1289 homes for under 1 hour,Pueblo West Distribution,2020-07-10,FALSE,2020-09-28
+8,Salt Creek Substation - Melted wire,Power Outage,Outage for 12378 homes for 2 hours,Salt Creek Substation,2020-08-10,FALSE,2020-10-29
+9,South Fowler Substation - Surge,Power Outage,Outage for 1000 homes for under 1 hour,South Fowler Substation,2020-09-10,FALSE,2020-11-29
+10,Shortgas Switching Station - Over surge,Power Outage,Outage for 1289 homes for under 1 hour,Shortgas Switching Station,2020-10-10,FALSE,2020-12-29
+11,Confluence Park Fire,Fire,3 alarm fire due to lightning strike,Confluence Park ,2020-11-10,FALSE,2021-01-29
+12,Alamo Placita Park Fire,Fire,2 alarm fire due to draught,Alamo Placita Park,2020-12-10,FALSE,2021-02-28
+13,Cherry Creek Fire,Fire,2 alarm fire due to storm,Cherry Creek Fire,2021-01-10,FALSE,2021-03-31
+14,5 car accident,Accident,Details in police report #PR09771928912,W COLFAX AVE / N FEDERAL BLVD,2021-02-10,FALSE,2021-05-01
+15,3 car accident,Accident,Details in police report #PR097134834,N DELAWARE ST / W 8TH AVE,2021-03-10,FALSE,2021-03-18
+16,tractor trailer,Accident,Details in police report #PR09777843672,5000 E 33RD AVE,2021-04-10,FALSE,2021-04-18
+17,1 car accident,Accident,Details in police report #PR097746782,W 48TH AVE / N BANNOCK ST,2021-05-10,FALSE,2021-05-11
+18,5 car accident,Accident,Details in police report #PR097734671,I70 HWYWB / N PECOS ST,2020-01-10,FALSE,2020-11-05
+19,3 car accident,Accident,Details in police report #PR097732u82,26TH ST / WALNUT ST,2020-02-10,FALSE,2020-03-11
+20,tractor trailer,Accident,Details in police report #PR097734782,1700 BLOCK S SANTA FE DR,2020-03-10,FALSE,2020-04-09
+21,1 car accident,Accident,Details in police report #PR09772436712,400 BLOCK S PERRY ST,2020-04-10,FALSE,2020-05-10
+22,5 car accident,Accident,Details in police report #PR0977237823,22ND ST / BLAKE ST,2020-05-10,FALSE,2020-06-09
+23,3 car accident,Accident,Details in police report #PR0977237823,E YALE WAY / S COOK ST,2020-06-10,FALSE,2020-07-10
+24,tractor trailer,Accident,Details in police report #PR097723781,W COLFAX AVE / N IRVING ST,2020-07-10,FALSE,2020-08-09
+25,1 car accident,Accident,Details in police report #PR097732671,N SPEER BLVD / ELITCH CIR,2020-08-10,FALSE,2020-09-09
+26,5 car accident,Accident,Details in police report #PR0977237619,W 6TH AVE / N PERRY ST,2020-09-10,FALSE,2020-10-10
+27,Jim Creek Fire,Fire,2 alarm fire caused campfire embers,Jim Creek Trail,2020-10-10,TRUE,
+28,Avery Substation - Summer black out,Power Outage,Outage for 12893 homes for 19 hours,Avery Substation,2020-11-10,TRUE,
+29,5 car accident,Accident,Details in police report #PR097134834,2400 BLOCK W COLFAX AVE,2020-12-10,TRUE,
