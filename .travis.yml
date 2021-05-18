@@ -13,13 +13,12 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
+  app: qc-engine
   api_key:
     secure: aXWK4U6vppoFbLuFKqQdMLwAHOPtg0RIlU9aMiaGi8fJe5szSZTHU1xpzj/hGyq76wjdFXV1Yp2xcKMjWcmDWl/nnofWmDsDYlxtPEKBDr8ZBkRk2w9S3jZSQoZIh5ipKWJ+MbMLXsV0dMoAEzCEgQYdZOSX6Li7Cqhk0O/ASZLQeWrIirVm/AKpp9zGsPRhIC2M89Kjur0fXTGhE7EIAI49yKfuVjtI+wJcRkNbvvZ6nenK1vcXuLcGdsJLxW6KLHe4w0cmLZerwBrSEugtuncgqgKnir01urK0tYf8eRxGtunRUi3J78mJ0q02XWN2YXzGiPngsncIuC91hTtxdXcJBMUCoXHuzOSuvOHSAFGtgXudEN8tA93SYftnvp1+65GvE6H44JNR6EjEANRci1Gyt8/84u3/AzQdyInYXIg8i1o2F6enMlxRiGYaWD9tuSvBOKBu5TxUWvF/1O+D1UkbOJ6FZHUI5tCxTrEH9sb/kxEhRTGfMjkUia26NmWzzwzImAa/OgtdrcunCPpEIjm2fUg7jvVWxpaVlye+JvttgioWgBheA17C8ynXwiymn9mwfgCFngJggH+Rt6FpYoXAxlEEFOLQrK27aWZKeNF2uV/xaWYceEgwbBzQ4X+bxvRYFq2qAlzjJqrbALNo7ECJpYnDOYweGYGBkohuWqA=
-  app: qc-engine
   on:
     repo: Quick-Command/qc-engine
     branch: main
     run:
-      - "rails db:migrate"
-      - "rake csv_load:all"
+      - rake db:migrate
     skip_cleanup: 'true'
