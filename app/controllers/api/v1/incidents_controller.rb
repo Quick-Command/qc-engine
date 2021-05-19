@@ -23,16 +23,16 @@ class Api::V1::IncidentsController < ApplicationController
   def validate_inicdent_params
     if params[:name].nil? || params[:name] == ""
       error = "Name cannot be blank."
-      render json: ErrorSerializer.new(error)
+       render json: { error: error }, status: :not_found
     elsif params[:incident_type].nil? || params[:incident_type] == ""
       error = "Incident type cannot be blank."
-      render json: ErrorSerializer.new(error)
+      render json: { error: error }, status: :not_found
     elsif params[:location].nil? || params[:location] == ""
       error = "Location cannot be blank."
-      render json: ErrorSerializer.new(error)
+      render json: { error: error }, status: :not_found
     elsif params[:start_date].nil? || params[:start_date] == ""
       error = "Start date cannot be blank."
-      render json: ErrorSerializer.new(error)
+      render json: { error: error }, status: :not_found
     else
     end
   end
