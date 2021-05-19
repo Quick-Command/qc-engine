@@ -7,7 +7,6 @@ class Api::V1::IncidentsController < ApplicationController
 
   def create
     incident = Incident.new(incident_params)
-    binding.pry
     if incident.save!
       render json: IncidentsSerializer.new(incident), status: :created
     else

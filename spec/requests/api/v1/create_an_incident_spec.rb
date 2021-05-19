@@ -23,7 +23,7 @@ RSpec.describe "Create an incident" do
       expect(created_incident.description).to eq(incident_params[:description])
       expect(created_incident.incident_type).to eq(incident_params[:incident_type])
       expect(created_incident.start_date).to eq(incident_params[:start_date])
-      expect(created_incident.close_date).to eq(incident_params[:close_date])
+      expect(created_incident.close_date).to eq(nil)
 
       expect(response).to have_http_status(:created)
       incident = JSON.parse(response.body, symbolize_names: true)
@@ -50,7 +50,7 @@ RSpec.describe "Create an incident" do
        expect(created_incident.description).to eq(incident_params[:description])
        expect(created_incident.incident_type).to eq(incident_params[:incident_type])
        expect(created_incident.start_date).to eq(incident_params[:start_date])
-       expect(created_incident.close_date).to eq(incident_params[:close_date])
+       expect(created_incident.close_date).to eq(nil)
 
        expect(response).to have_http_status(:created)
        incident = JSON.parse(response.body, symbolize_names: true)
