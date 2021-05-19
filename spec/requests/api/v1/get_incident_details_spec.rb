@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Incident Details" do
   describe "Get an incident's details" do
     it "happy path" do
-      incident = create(:incident, active: true)
+      incident = create(:incident, active: true, close_date: "")
 
       get "/api/v1/incidents/#{incident.id}"
       result = JSON.parse(response.body, symbolize_names: true)
@@ -25,11 +25,19 @@ RSpec.describe "Incident Details" do
       get "/api/v1/incidents/#{incident.id + 1}"
       result = JSON.parse(response.body, symbolize_names: true)
 
-      expect(response).to be_successful
-      expect(response.status).to eq(200)
+      expect(response.status).to eq(404)
       expect(result).to be_a(Hash)
-      expect(result[:data]).to be_an(Array)
-      expect(result[:data].length).to eq(0)
+      expect(result[:error]).to eq("Incident does not exist with that id")
+    end
+    it "edge case" do
+      incident = create(:incident, active: true)
+
+      get "/api/v1/incidents/ashjdnvajhnv"
+      result = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(404)
+      expect(result).to be_a(Hash)
+      expect(result[:error]).to eq("Incident does not exist with that id")
     end
   end
 end
