@@ -7,12 +7,7 @@ class Api::V1::IncidentsController < ApplicationController
 
   def create
     incident = Incident.new(incident_params)
-    if incident.active == false
-      if incident_params[:close_date].nil? || incident_params[:close_date] == ""
-        error = "An inactive incident needs a close date."
-        render json: { error: error }, status: :not_found
-       end
-    elsif incident.save
+    if incident.save
       render json: IncidentsSerializer.new(incident), status: :created
     else
       validate_inicdent_params
@@ -26,6 +21,7 @@ class Api::V1::IncidentsController < ApplicationController
   end
 
   def validate_inicdent_params
+
     if params[:name].nil? || params[:name] == ""
       error = "Incident name cannot be blank."
        render json: { error: error }, status: :not_found
@@ -37,6 +33,9 @@ class Api::V1::IncidentsController < ApplicationController
       render json: { error: error }, status: :not_found
     elsif params[:start_date].nil? || params[:start_date] == ""
       error = "Incident start date cannot be blank."
+      render json: { error: error }, status: :not_found
+    elsif params[:close_date].nil? || params[:close_date] == ""
+      error = "An inactive incident needs a close date"
       render json: { error: error }, status: :not_found
     else
     end
