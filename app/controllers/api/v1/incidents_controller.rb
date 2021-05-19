@@ -14,6 +14,16 @@ class Api::V1::IncidentsController < ApplicationController
     end
   end
 
+  def show
+    incident = Incident.where(id: params[:id])
+    if incident.count == 0
+      error = "Incident does not exist with that id"
+      render json: { error: error }, status: :not_found
+    else
+      render json: IncidentsSerializer.new(incident.first)
+    end
+  end
+
   private
 
   def incident_params
@@ -23,7 +33,7 @@ class Api::V1::IncidentsController < ApplicationController
   def validate_inicdent_params
     if params[:name].nil? || params[:name] == ""
       error = "Incident name cannot be blank."
-       render json: { error: error }, status: :not_found
+      render json: { error: error }, status: :not_found
     elsif params[:incident_type].nil? || params[:incident_type] == ""
       error = "Incident type cannot be blank."
       render json: { error: error }, status: :not_found
