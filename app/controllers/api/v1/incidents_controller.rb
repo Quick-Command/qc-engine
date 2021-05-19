@@ -21,7 +21,6 @@ class Api::V1::IncidentsController < ApplicationController
   end
 
   def validate_inicdent_params
-
     if params[:name].nil? || params[:name] == ""
       error = "Incident name cannot be blank."
        render json: { error: error }, status: :not_found
@@ -37,7 +36,6 @@ class Api::V1::IncidentsController < ApplicationController
     elsif params[:close_date].nil? || params[:close_date] == ""
       error = "An inactive incident needs a close date"
       render json: { error: error }, status: :not_found
-    else
     end
   end
 end
