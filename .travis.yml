@@ -20,5 +20,5 @@ deploy:
     repo: Quick-Command/qc-engine
     branch: main
     run:
-      - rake db:migrate
+      - bundle exec rake db:migrate
     skip_cleanup: 'true'

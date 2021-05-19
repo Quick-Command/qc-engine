@@ -214,6 +214,39 @@ The following is a depiction of our Database Schema
       ]
   ```
 ​
+## Create an Incident
+`POST /api/v1/incidents`
+* Set header `Content-Type` to `application/json`
+* Body for request
+  - Active attribute can be left out and it will default to true, or  specify `"active": false` to input a resolved incident, but you must enter a close date for an inactive incident
+```json
+  {
+  "name": "Jim Creeks Fire",
+  "incident_type": "Fire",
+  "description": "5th alarm fire",
+  "location": "Denver, CO",
+  "start_date": "2020-05-01",
+  "close_date": ""
+   }
+```
+* Return data
+```json
+  {
+    "data": {
+        "id": "32",
+        "type": "incident",
+        "attributes": {
+            "name": "Jim Creeks Fire",
+            "active": true,
+            "incident_type": "Fire",
+            "description": "5th alarm fire",
+            "location": "Denver, CO",
+            "start_date": "2020-05-01T00:00:00.000Z",
+            "close_date": null
+        }
+    }
+  }
+```
 ## Incident Details
 `GET /api/v1/incidents/:incident_id`
   ```json
