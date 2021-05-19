@@ -252,18 +252,16 @@ The following is a depiction of our Database Schema
   ```json
   {
     "data": {
-      "id": "1",
-      "type": "incident",
-      "id": "1",
+        "id": "1",
         "type": "incident",
         "attributes": {
-          "name": "Jim Creek Fire",
-          "type": "Fire",
-          "status": "resolved",
-          "description": "Large fire at Jim's",
-          "location": "Jim's Creek park",
-          "start_date": "2021-01-01",
-          "close_date": "2021-05-13"
+            "name": "October 2011 2.0 earthquake",
+            "active": false,
+            "incident_type": "Earthquake",
+            "description": "2.0 earthquake, facade damage to some buildings, 10 trees fell",
+            "location": "City Proper",
+            "start_date": "2020-01-10T00:00:00.000Z",
+            "close_date": "2020-11-05T00:00:00.000Z"
         }
     }
   }
