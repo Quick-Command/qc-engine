@@ -5,7 +5,7 @@ RSpec.describe "Incident Details" do
     it "happy path" do
       incident = create(:incident, active: true)
 
-      get "/api/v1/incident/#{incident.id}"
+      get "/api/v1/incidents/#{incident.id}"
       result = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to be_successful
@@ -22,7 +22,7 @@ RSpec.describe "Incident Details" do
     it "sad path" do
       incident = create(:incident, active: true)
 
-      get "/api/v1/incident/#{incident.id + 1}"
+      get "/api/v1/incidents/#{incident.id + 1}"
       result = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to be_successful
