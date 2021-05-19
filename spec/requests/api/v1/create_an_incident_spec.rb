@@ -58,7 +58,7 @@ RSpec.describe "Create an incident" do
    end
 
   describe "sad path" do
-    it "Won't create a new incident with missing information" do
+    it "Won't create a new incident with missing incident_type" do
       incident_params = ({
         name: "Jim Creeks Fire",
         active: false,
@@ -73,7 +73,70 @@ RSpec.describe "Create an incident" do
      post "/api/v1/incidents", headers: headers, params: JSON.generate(incident_params)
 
      error = JSON.parse(response.body, symbolize_names:true)
-     error_message = "Validation failed: incident type, name, description, location, and start date cannot be blank"
+     error_message = "Incident type cannot be blank."
+
+     expect(response).to have_http_status(:not_found)
+     expect(error).to have_key(:error)
+     expect(error[:error]).to eq("#{error_message}")
+    end
+    it "Won't create a new incident with missing name" do
+      incident_params = ({
+        name: "",
+        active: false,
+        incident_type: "Fire",
+        description: "5th alarm fire",
+        location: "Denver, CO",
+        start_date: "2020-05-01",
+        close_date: "2020-05-02"
+         })
+     headers = {"CONTENT_TYPE" => "application/json"}
+
+     post "/api/v1/incidents", headers: headers, params: JSON.generate(incident_params)
+
+     error = JSON.parse(response.body, symbolize_names:true)
+     error_message = "Incident name cannot be blank."
+
+     expect(response).to have_http_status(:not_found)
+     expect(error).to have_key(:error)
+     expect(error[:error]).to eq("#{error_message}")
+    end
+    it "Won't create a new incident with missing location" do
+      incident_params = ({
+        name: "Jim Creeks Fire",
+        active: false,
+        incident_type: "Fire",
+        description: "5th alarm fire",
+        location: "",
+        start_date: "2020-05-01",
+        close_date: "2020-05-02"
+         })
+     headers = {"CONTENT_TYPE" => "application/json"}
+
+     post "/api/v1/incidents", headers: headers, params: JSON.generate(incident_params)
+
+     error = JSON.parse(response.body, symbolize_names:true)
+     error_message = "Incident location cannot be blank."
+
+     expect(response).to have_http_status(:not_found)
+     expect(error).to have_key(:error)
+     expect(error[:error]).to eq("#{error_message}")
+    end
+    it "Won't create a new incident with missing start_date" do
+      incident_params = ({
+        name: "Jim Creeks Fire",
+        active: false,
+        incident_type: "Fire",
+        description: "5th alarm fire",
+        location: "Denver, CO",
+        start_date: "",
+        close_date: "2020-05-02"
+         })
+     headers = {"CONTENT_TYPE" => "application/json"}
+
+     post "/api/v1/incidents", headers: headers, params: JSON.generate(incident_params)
+
+     error = JSON.parse(response.body, symbolize_names:true)
+     error_message = "Incident start date cannot be blank."
 
      expect(response).to have_http_status(:not_found)
      expect(error).to have_key(:error)
