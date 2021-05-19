@@ -5,4 +5,19 @@ class Api::V1::IncidentsController < ApplicationController
     render json: IncidentsSerializer.new(incidents)
   end
 
+  def create
+    incident = Incident.new(incident_params)
+    binding.pry
+    if incident.save!
+      render json: IncidentsSerializer.new(incident), status: :created
+    else
+      render json: IncidentCreateErrorSerializer.new
+    end
+  end
+
+  private
+
+  def incident_params
+    params.permit(:name, :active, :incident_type, :description, :location, :start_date, :close_date )
+  end
 end
