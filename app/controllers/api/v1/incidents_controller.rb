@@ -19,13 +19,11 @@ class Api::V1::IncidentsController < ApplicationController
     if incident.count == 0
       error = "Incident does not exist with that id"
       render json: { error: error }, status: :not_found
-    else
-      if validate_update_params?
+    elsif validate_update_params?
         incident.update(incident_params)
         render json: IncidentsSerializer.new(incident.first)
-      else
-        update_validation_errors
-      end
+    else
+      update_validation_errors
     end
   end
 
