@@ -14,6 +14,19 @@ class Api::V1::IncidentsController < ApplicationController
     end
   end
 
+  def update
+    incident = Incident.where(id: params[:id])
+    if incident.count == 0
+      error = "Incident does not exist with that id"
+      render json: { error: error }, status: :not_found
+    elsif validate_update_params?
+        incident.update(incident_params)
+        render json: IncidentsSerializer.new(incident.first)
+    else
+      update_validation_errors
+    end
+  end
+
   def show
     incident = Incident.where(id: params[:id])
     if incident.count == 0
@@ -43,9 +56,39 @@ class Api::V1::IncidentsController < ApplicationController
     elsif params[:start_date].nil? || params[:start_date] == ""
       error = "Incident start date cannot be blank."
       render json: { error: error }, status: :not_found
-    elsif params[:close_date].nil? || params[:close_date] == ""
-      error = "An inactive incident needs a close date"
+    elsif incident_params[:active] == false
+      if incident_params[:close_date].nil? || incident_params[:close_date] == ""
+        error = "An inactive incident needs a close date"
+        render json: { error: error }, status: :not_found
+      end
+    end
+  end
+
+  def validate_update_params?
+    incident_params.each do |param|
+      return false if param[-1] == ""
+    end
+  end
+
+  def update_validation_errors
+    incident = Incident.find(params[:id])
+    if incident_params[:name] == ""
+      error = "Incident name cannot be blank."
       render json: { error: error }, status: :not_found
+    elsif incident_params[:incident_type] == ""
+      error = "Incident type cannot be blank."
+      render json: { error: error }, status: :not_found
+    elsif incident_params[:location] == ""
+      error = "Incident location cannot be blank."
+      render json: { error: error }, status: :not_found
+    elsif incident_params[:start_date] == ""
+      error = "Incident start date cannot be blank."
+      render json: { error: error }, status: :not_found
+    elsif incident[:active] == false
+      if incident_params[:close_date].nil? || incident_params[:close_date] == ""
+        error = "An inactive incident needs a close date"
+        render json: { error: error }, status: :not_found
+      end
     end
   end
 end

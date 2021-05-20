@@ -247,6 +247,35 @@ The following is a depiction of our Database Schema
     }
   }
 ```
+
+## Update an Incident
+`PATCH '/api/v1/incidents/:incident_id'`
+* Set header `Content-Type` to `application/json`
+* Body for request
+```json
+  {
+  "name": "Denver Zoo Fire"
+   }
+```
+* Return Data
+```json
+  {
+    "data": {
+        "id": "1",
+        "type": "incident",
+        "attributes": {
+            "name": "Denver Zoo Fire",
+            "active": false,
+            "incident_type": "Earthquake",
+            "description": "2.0 earthquake, facade damage to some buildings, 10 trees fell",
+            "location": "City Proper",
+            "start_date": "2020-01-10T00:00:00.000Z",
+            "close_date": "2020-11-05T00:00:00.000Z"
+        }
+    }
+  }
+```
+
 ## Incident Details
 `GET /api/v1/incidents/:incident_id`
   ```json
