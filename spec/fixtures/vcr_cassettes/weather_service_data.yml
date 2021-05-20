@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: WEATHER_MICROSERVICE_URL/api/v1/forecast_data?location=Denver,CO
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.4.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '1289'
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":null,"type":"forecast","attributes":{"daily_weather":[{"date":"2021-05-20","sunrise":"2021-05-20
+        06:41:01 -0500","sunset":"2021-05-20 21:12:15 -0500","min_temp":53.15,"max_temp":79.65,"humidity":22,"wind_speed":17.58,"wind_deg":151,"wind_gust":23.4,"conditions":"scattered
+        clouds","precipitation":0.2},{"date":"2021-05-21","sunrise":"2021-05-21 06:40:16
+        -0500","sunset":"2021-05-21 21:13:09 -0500","min_temp":56.59,"max_temp":82.36,"humidity":17,"wind_speed":23.94,"wind_deg":168,"wind_gust":42.41,"conditions":"overcast
+        clouds","precipitation":0},{"date":"2021-05-22","sunrise":"2021-05-22 06:39:33
+        -0500","sunset":"2021-05-22 21:14:02 -0500","min_temp":57.36,"max_temp":74.86,"humidity":40,"wind_speed":20.07,"wind_deg":149,"wind_gust":32.03,"conditions":"light
+        rain","precipitation":0.72},{"date":"2021-05-23","sunrise":"2021-05-23 06:38:52
+        -0500","sunset":"2021-05-23 21:14:53 -0500","min_temp":56.35,"max_temp":75.43,"humidity":10,"wind_speed":20.49,"wind_deg":205,"wind_gust":37.27,"conditions":"clear
+        sky","precipitation":0.32},{"date":"2021-05-24","sunrise":"2021-05-24 06:38:13
+        -0500","sunset":"2021-05-24 21:15:45 -0500","min_temp":51.4,"max_temp":78.08,"humidity":9,"wind_speed":11.65,"wind_deg":44,"wind_gust":21.97,"conditions":"clear
+        sky","precipitation":0}]}}}'
+  recorded_at: Thu, 20 May 2021 22:40:39 GMT
+recorded_with: VCR 6.0.0
