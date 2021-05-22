@@ -9,12 +9,12 @@ class Api::V1::IncidentContactsController < ApplicationController
       render json: {error: "Incident does not exist"}, status: :not_found
     elsif contact.empty?
       render json: {error: "Contact does not exist"}, status: :not_found
+    elsif contact[0].assigned_to_active_incident? == true
+      render json: {error: "Contact is assigned to another incident"}, status: 400
     elsif incident_contact.save
       render json: IncidentContactSerializer.new(contact.first, {params: {distance_miles: distance_miles, distance_minutes: distance_minutes, title: incident_contact_params[:title]}})
     elsif incident_contact_params[:title] == nil || incident_contact_params[:title] == ""
       render json: {error: "Title must be assigned"}, status: 400
-    elsif
-      render json: {error: "Contact is assigned to another incident"}
     end
   end
 
