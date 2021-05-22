@@ -292,6 +292,41 @@ The following is a depiction of our Database Schema
       "roles": ["Incident Commander", "Safety Officer"]
   }
   ```
+  * return
+    ```json
+    {
+      "data": {
+      "id": "5",
+      "type": "contact",
+      "attributes": {
+          "name": "Wells Fergi",
+          "email": "wfergi@email.com",
+          "phone_number": "123-456-7890",
+          "job_title": "Fire Commander",
+          "city": "Denver",
+          "state": "CO",
+          "roles": {
+              "data": [
+                  {
+                      "id": "1",
+                      "type": "role",
+                      "attributes": {
+                          "title": "Incident Commander"
+                      }
+                  },
+                  {
+                      "id": "2",
+                      "type": "role",
+                      "attributes": {
+                          "title": "Safety Officer"
+                      }
+                  }
+              ]
+            }
+          }
+        }
+      }
+    ```
 
 
 
@@ -301,25 +336,37 @@ The following is a depiction of our Database Schema
   {
     "data": [
       {
-        "id": "1",
-          "type": "contact",
-          "attributes": {
-            "name": "Moo Philips",
-            "title": "Incident Commander",
-            "email": "mphillips@email.gov",
-            "phone": "123-456-7890"
+        "data": {
+        "id": "5",
+        "type": "contact",
+        "attributes": {
+            "name": "Wells Fergi",
+            "email": "wfergi@email.com",
+            "phone_number": "123-456-7890",
+            "job_title": "Fire Commander",
+            "city": "Denver",
+            "state": "CO",
+            "roles": {
+                "data": [
+                    {
+                        "id": "1",
+                        "type": "role",
+                        "attributes": {
+                            "title": "Incident Commander"
+                        }
+                    },
+                    {
+                        "id": "2",
+                        "type": "role",
+                        "attributes": {
+                            "title": "Safety Officer"
+                        }
+                    }
+                ]
+              }
+            }
           }
-      },
-      {
-        "id": "20",
-          "type": "contact",
-          "attributes": {
-            "name": "Quack Doc",
-            "title": "Safety Officer",
-            "email": "qdoc@email.gov",
-            "phone": "198-765-4321"
-          }
-      }
+        }
     ]
   }
   ```
