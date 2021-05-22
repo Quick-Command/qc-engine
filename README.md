@@ -54,12 +54,11 @@ To get the web application running, please follow these directions to set up you
 ## DB Schema
 The following is a depiction of our Database Schema
 
- ![db_schema](https://user-images.githubusercontent.com/23460878/118385615-12ebbc80-b5d6-11eb-82cd-e54491496c38.png)
+ ![db_schema](db/data/readme_docs/quickcommand_schema.png)
 
 ## Endpoints
-  ### QuickCommand API Contract
-​
-​
+  ### QuickCommand API Contract  
+
 | HTTP verbs | Paths  | Used for | Output |
 | ---------- | ------ | -------- | ------:|
 | GET | /api/v1/incidents?active=true | Get active incidents | [json](#active-incidents) |
