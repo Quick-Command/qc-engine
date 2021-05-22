@@ -43,6 +43,14 @@ RSpec.describe 'Create A Contact Endpoint' do
         expect(result[:data][:attributes][:job_title]).to be_a(String)
         expect(result[:data][:attributes]).to have_key(:state)
         expect(result[:data][:attributes][:job_title]).to be_a(String)
+        expect(result[:data][:attributes][:roles]).to be_a(Hash)
+        expect(result[:data][:attributes][:roles][:data]).to be_an(Array)
+        expect(result[:data][:attributes][:roles][:data].first).to be_a(Hash)
+        expect(result[:data][:attributes][:roles][:data].first.keys).to be_a(Hash)
+        expect(result[:data][:attributes][:roles][:data].first.keys).to eq([:id, :type, :attributes])
+        expect(result[:data][:attributes][:roles][:data].first[:type]).to eq("role")
+        expect(result[:data][:attributes][:roles][:data].first[:attributes]).to be_a(Hash)
+        expect(result[:data][:attributes][:roles][:data].first[:attributes].keys).to eq([:title])
       end
     end
   end
