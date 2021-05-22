@@ -12,7 +12,7 @@ class Api::V1::IncidentContactsController < ApplicationController
     elsif incident_contact.save
       render json: IncidentContactSerializer.new(contact.first, {params: {distance_miles: distance_miles, distance_minutes: distance_minutes, title: incident_contact_params[:title]}})
     elsif incident_contact_params[:title] == nil || incident_contact_params[:title] == ""
-      render json: {error: "Title must be assigned"}
+      render json: {error: "Title must be assigned"}, status: 400
     elsif
       render json: {error: "Contact is assigned to another incident"}
     end
