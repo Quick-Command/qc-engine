@@ -26,13 +26,13 @@ RSpec.describe 'Create an Incident Contact Endpoint' do
         expect(result[:data][:type]).to eq("incident_contact")
         expect(result[:data]).to have_key(:attributes)
         expect(result[:data][:attributes]).to be_a(Hash)
-        expect(result[:data][:attributes].count).to eq(3)
+        expect(result[:data][:attributes].count).to eq(8)
         expect(result[:data][:attributes]).to have_key(:title)
         expect(result[:data][:attributes][:title]).to be_a(String)
-        expect(result[:data][:attributes]).to have_key(:distance)
-        expect(result[:data][:attributes][:distance]).to be_a(String)
-        expect(result[:data][:attributes]).to have_key(:time_to_incident)
-        expect(result[:data][:attributes][:time_to_incident]).to be_a(String)
+        expect(result[:data][:attributes]).to have_key(:distance_miles)
+        expect(result[:data][:attributes][:distance_miles]).to be_a(String)
+        expect(result[:data][:attributes]).to have_key(:distance_minutes)
+        expect(result[:data][:attributes][:distance_minutes]).to be_a(String)
       end
     end
   end
