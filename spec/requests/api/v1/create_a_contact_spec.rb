@@ -4,17 +4,20 @@ RSpec.describe 'Create A Contact Endpoint' do
   describe 'post request to create a contact' do
     describe 'happy path' do
       it 'can create a contact with multiple roles' do
-        create_list(:contact, 10)
-        contact_1 = Contact.all.first
-        contact_2 = Contact.all[1]
         role_1 = create(:role, title: "Commander in Cheif")
         role_2 = create(:role, title: "Safety Officer")
 
-        create(:contact_role, contact_id: contact_1.id, role_id: role_1.id)
-        create(:contact_role, contact_id: contact_1.id, role_id: role_2.id)
-        contact_id = Contact.all.first
+        contact_params = ({
+          name: "Wells Fergi",
+          email: "wfergi@email.com",
+          phone_number: "123-456-7890",
+          job_title: "Fire Commander",
+          city: "Denver",
+          state: "CO",
+          roles: ["#{role_1.title}", "#{role_2.title}"]
+          })
 
-        post "/api/v1/contacts/#{contact_id.id}"
+        post "/api/v1/contacts"
 
         result = JSON.parse(response.body, symbolize_names: true)
 
@@ -25,7 +28,7 @@ RSpec.describe 'Create A Contact Endpoint' do
         expect(result[:data].count).to eq(3)
         expect(result[:data]).to have_key(:id)
         expect(result[:data][:id]).to be_a(String)
-        expect(result[:data][:id]).to eq(contact_id.id.to_s)
+        expect(result[:data][:id]).to eq(contact1.id.to_s)
         expect(result[:data]).to have_key(:type)
         expect(result[:data][:type]).to eq("contact")
         expect(result[:data]).to have_key(:attributes)
