@@ -256,7 +256,8 @@ The following is a depiction of our Database Schema
           }
       }
   }
-  ```
+```
+
 ​## Contact Details
 `GET /api/v1/contacts/1`
 ```json
@@ -275,31 +276,97 @@ The following is a depiction of our Database Schema
     }
 }
 ```
+
+## Create a Contact
+`POST /api/v1/contacts`
+* set header `contact-type` to `application/json`
+* body
+  ```json
+    {
+      "name": "Wells Fergi",
+      "email": "wfergi@email.com",
+      "phone_number": "123-456-7890",
+      "job_title": "Fire Commander",
+      "city": "Denver",
+      "state": "CO",
+      "roles": ["Incident Commander", "Safety Officer"]
+  }
+  ```
+  * return
+    ```json
+    {
+      "data": {
+      "id": "5",
+      "type": "contact",
+      "attributes": {
+          "name": "Wells Fergi",
+          "email": "wfergi@email.com",
+          "phone_number": "123-456-7890",
+          "job_title": "Fire Commander",
+          "city": "Denver",
+          "state": "CO",
+          "roles": {
+              "data": [
+                  {
+                      "id": "1",
+                      "type": "role",
+                      "attributes": {
+                          "title": "Incident Commander"
+                      }
+                  },
+                  {
+                      "id": "2",
+                      "type": "role",
+                      "attributes": {
+                          "title": "Safety Officer"
+                      }
+                  }
+              ]
+            }
+          }
+        }
+      }
+    ```
+
+
+
 ## Incident Contacts
 `GET /api/v1/incidents/:incident_id/contacts`
   ```json
   {
     "data": [
       {
-        "id": "1",
-          "type": "contact",
-          "attributes": {
-            "name": "Moo Philips",
-            "title": "Incident Commander",
-            "email": "mphillips@email.gov",
-            "phone": "123-456-7890"
+        "data": {
+        "id": "5",
+        "type": "contact",
+        "attributes": {
+            "name": "Wells Fergi",
+            "email": "wfergi@email.com",
+            "phone_number": "123-456-7890",
+            "job_title": "Fire Commander",
+            "city": "Denver",
+            "state": "CO",
+            "roles": {
+                "data": [
+                    {
+                        "id": "1",
+                        "type": "role",
+                        "attributes": {
+                            "title": "Incident Commander"
+                        }
+                    },
+                    {
+                        "id": "2",
+                        "type": "role",
+                        "attributes": {
+                            "title": "Safety Officer"
+                        }
+                    }
+                ]
+              }
+            }
           }
-      },
-      {
-        "id": "20",
-          "type": "contact",
-          "attributes": {
-            "name": "Quack Doc",
-            "title": "Safety Officer",
-            "email": "qdoc@email.gov",
-            "phone": "198-765-4321"
-          }
-      }
+        }
     ]
   }
   ```

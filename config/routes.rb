@@ -3,11 +3,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :contacts, only: [:show]
+      resources :contacts, only: [:show, :create]
       resources :incidents, only: [:index, :create, :show, :update]
-      # namespace :incidents do
-      #   get '/open', to: 'incidents#incidents_by_status'
-      # end
     end
   end
 end

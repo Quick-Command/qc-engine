@@ -14,6 +14,9 @@ namespace :csv_load do
   task all: :environment do
     build("./db/data/contacts.csv", Contact)
     build("./db/data/incidents.csv", Incident)
+    build("./db/data/roles.csv", Role)
+    build("./db/data/contact_roles.csv", ContactRole)
+    build("./db/data/incident_contacts.csv", IncidentContact)
   end
 
   desc "TODO"
@@ -24,5 +27,20 @@ namespace :csv_load do
   desc "TODO"
   task incidents: :environment do
     build("./db/data/incidents.csv", Incident)
+  end
+
+  desc "TODO"
+  task roles: :environment do
+    build("./db/data/roles.csv", Role)
+  end
+
+  desc "TODO"
+  task contact_roles: :environment do
+    build("./db/data/contact_roles.csv", ContactRole)
+  end
+
+  desc "TODO"
+  task incident_contacts: :environment do
+    build("./db/data/incident_contacts.csv", IncidentContact)
   end
 end
