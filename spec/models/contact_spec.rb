@@ -13,5 +13,7 @@ RSpec.describe Contact, type: :model do
   describe "relationships" do
     it { should have_many(:incident_contacts) }
     it { should have_many(:incidents).through(:incident_contacts) }
+    it { should have_many(:contact_roles) }
+    it { should have_many(:roles).through(:contact_roles) }
   end
 end
