@@ -6,18 +6,16 @@ class Api::V1::ContactsController < ApplicationController
 
   def create
     contact = Contact.new(contact_params)
-    if params[:roles] == nil
-      render json: {error: "At least one roll must be selected"}
-    end
-
-    if contact.save
+    if params[:roles] == nil || params[:roles].empty?
+      render json: {error: "At least one role must be selected"}, status: 400
+    elsif contact.save
       params[:roles].each do |role|
         role = (Role.where(title: role)).first
         ContactRole.create(contact_id: contact.id, role_id: role.id)
       end
       render json:ContactSerializer.new(contact)
     else
-      binding.pry
+      render json: {error: "Name, email, phone, city, or state cannot be blank"}, status: 400
     end
   end
 
