@@ -5,9 +5,15 @@ RSpec.describe 'Contact Details API' do
     describe 'happy path' do
       it 'can return a specific contact with their details by a contact id' do
         create_list(:contact, 10)
-        contact_id = Contact.all.first
+        contact_1 = Contact.all.first
+        contact_2 = Contact.all[1]
+        role_1 = create(:role, title: "Commander in Cheif")
+        role_2 = create(:role, title: "Safety Officer")
 
-        get "/api/v1/contacts/#{contact_id.id}"
+        create(:contact_role, contact_id: contact_1.id, role_id: role_1.id)
+        create(:contact_role, contact_id: contact_1.id, role_id: role_2.id)
+
+        get "/api/v1/contacts/#{contact_1.id}"
 
         result = JSON.parse(response.body, symbolize_names: true)
 
@@ -18,12 +24,12 @@ RSpec.describe 'Contact Details API' do
         expect(result[:data].count).to eq(3)
         expect(result[:data]).to have_key(:id)
         expect(result[:data][:id]).to be_a(String)
-        expect(result[:data][:id]).to eq(contact_id.id.to_s)
+        expect(result[:data][:id]).to eq(contact_1.id.to_s)
         expect(result[:data]).to have_key(:type)
         expect(result[:data][:type]).to eq("contact")
         expect(result[:data]).to have_key(:attributes)
         expect(result[:data][:attributes]).to be_a(Hash)
-        expect(result[:data][:attributes].count).to eq(6)
+        expect(result[:data][:attributes].count).to eq(7)
         expect(result[:data][:attributes]).to have_key(:name)
         expect(result[:data][:attributes][:name]).to be_a(String)
         expect(result[:data][:attributes]).to have_key(:email)
@@ -39,7 +45,6 @@ RSpec.describe 'Contact Details API' do
         expect(result[:data][:attributes][:roles]).to be_a(Hash)
         expect(result[:data][:attributes][:roles][:data]).to be_an(Array)
         expect(result[:data][:attributes][:roles][:data].first).to be_a(Hash)
-        expect(result[:data][:attributes][:roles][:data].first.keys).to be_a(Hash)
         expect(result[:data][:attributes][:roles][:data].first.keys).to eq([:id, :type, :attributes])
         expect(result[:data][:attributes][:roles][:data].first[:type]).to eq("role")
         expect(result[:data][:attributes][:roles][:data].first[:attributes]).to be_a(Hash)

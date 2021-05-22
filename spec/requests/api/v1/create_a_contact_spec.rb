@@ -30,7 +30,7 @@ RSpec.describe 'Create A Contact Endpoint' do
         expect(result[:data][:type]).to eq("contact")
         expect(result[:data]).to have_key(:attributes)
         expect(result[:data][:attributes]).to be_a(Hash)
-        expect(result[:data][:attributes].count).to eq(6)
+        expect(result[:data][:attributes].count).to eq(7)
         expect(result[:data][:attributes]).to have_key(:name)
         expect(result[:data][:attributes][:name]).to be_a(String)
         expect(result[:data][:attributes]).to have_key(:email)
