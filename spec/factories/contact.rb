@@ -4,5 +4,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     phone_number { Faker::PhoneNumber.cell_phone }
     job_title { Faker::Company.profession }
+    city { "Denver" }
+    state { "CO" }
   end
 end

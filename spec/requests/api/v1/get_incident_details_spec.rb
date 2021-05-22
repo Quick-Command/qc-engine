@@ -15,7 +15,7 @@ RSpec.describe "Incident Details" do
       expect(result[:data].keys).to eq([:id, :type, :attributes])
       expect(result[:data][:type]).to eq("incident")
       expect(result[:data][:attributes]).to be_a(Hash)
-      expect(result[:data][:attributes].keys).to eq([:name, :active, :incident_type, :description, :location, :start_date, :close_date])
+      expect(result[:data][:attributes].keys).to eq([:name, :active, :incident_type, :description, :start_date, :close_date, :location, :city, :state])
       expect(result[:data][:attributes][:active]).to eq(true)
       expect(result[:data][:attributes][:close_date]).to eq(nil)
     end
