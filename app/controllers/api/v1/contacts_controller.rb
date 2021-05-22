@@ -10,7 +10,7 @@ class Api::V1::ContactsController < ApplicationController
       render json: {error: "At least one role must be selected"}, status: 400
     elsif contact.save
       params[:roles].each do |role|
-        role = (Role.where(title: role)).first
+        role = Role.find_or_create_by(title: role)
         ContactRole.create(contact_id: contact.id, role_id: role.id)
       end
       render json:ContactSerializer.new(contact)
