@@ -256,7 +256,8 @@ The following is a depiction of our Database Schema
           }
       }
   }
-  ```
+```
+
 ​## Contact Details
 `GET /api/v1/contacts/1`
 ```json
@@ -275,6 +276,25 @@ The following is a depiction of our Database Schema
     }
 }
 ```
+
+## Create a Contact
+`POST /api/v1/contacts`
+* set header `contact-type` to `application/json`
+* body
+  ```json
+    {
+      "name": "Wells Fergi",
+      "email": "wfergi@email.com",
+      "phone_number": "123-456-7890",
+      "job_title": "Fire Commander",
+      "city": "Denver",
+      "state": "CO",
+      "roles": ["Incident Commander", "Safety Officer"]
+  }
+  ```
+
+
+
 ## Incident Contacts
 `GET /api/v1/incidents/:incident_id/contacts`
   ```json
