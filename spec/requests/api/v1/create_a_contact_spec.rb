@@ -56,5 +56,59 @@ RSpec.describe 'Create A Contact Endpoint' do
         expect(result[:data][:attributes][:roles][:data].first[:attributes].keys).to eq([:title])
       end
     end
+    describe 'sad path' do
+      it 'cannot create a contact without at least one role' do
+        role_1 = create(:role, title: "Commander in Cheif")
+        role_2 = create(:role, title: "Safety Officer")
+
+        contact_params = ({
+          name: "Wells Fergi",
+          email: "wfergi@email.com",
+          phone_number: "123-456-7890",
+          job_title: "Fire Commander",
+          city: "Denver",
+          state: "CO",
+          roles: []
+          })
+        headers = {"CONTENT_TYPE" => "application/json"}
+        post "/api/v1/contacts", headers: headers, params: JSON.generate(contact_params)
+
+        result = JSON.parse(response.body, symbolize_names: true)
+        contact_1 = Contact.last
+
+        error = JSON.parse(response.body, symbolize_names: true)
+        error_message = "At least one role must be selected"
+
+        expect(response).to have_http_status(400)
+        expect(error).to have_key(:error)
+        expect(error[:error]).to eq("#{error_message}")
+      end
+      it 'cannot create a contact without a name, email, and phone' do
+        role_1 = create(:role, title: "Commander in Cheif")
+        role_2 = create(:role, title: "Safety Officer")
+
+        contact_params = ({
+          name: "",
+          email: "wfergi@email.com",
+          phone_number: "123-456-7890",
+          job_title: "Fire Commander",
+          city: "Denver",
+          state: "CO",
+          roles: ["#{role_1.title}", "#{role_2.title}"]
+          })
+        headers = {"CONTENT_TYPE" => "application/json"}
+        post "/api/v1/contacts", headers: headers, params: JSON.generate(contact_params)
+
+        result = JSON.parse(response.body, symbolize_names: true)
+        contact_1 = Contact.last
+
+        error = JSON.parse(response.body, symbolize_names: true)
+        error_message = "Name, email, phone, city, or state cannot be blank"
+
+        expect(response).to have_http_status(400)
+        expect(error).to have_key(:error)
+        expect(error[:error]).to eq("#{error_message}")
+      end
+    end
   end
 end
