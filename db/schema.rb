@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(version: 2021_05_22_112456) do
   create_table "incident_contacts", force: :cascade do |t|
     t.bigint "incident_id"
     t.bigint "contact_id"
+    t.bigint "role_id"
     t.index ["contact_id"], name: "index_incident_contacts_on_contact_id"
     t.index ["incident_id"], name: "index_incident_contacts_on_incident_id"
+    t.index ["role_id"], name: "index_incident_contacts_on_role_id"
   end
 
   create_table "incidents", force: :cascade do |t|
@@ -66,4 +68,5 @@ ActiveRecord::Schema.define(version: 2021_05_22_112456) do
   add_foreign_key "contact_roles", "roles"
   add_foreign_key "incident_contacts", "contacts"
   add_foreign_key "incident_contacts", "incidents"
+  add_foreign_key "incident_contacts", "roles"
 end
