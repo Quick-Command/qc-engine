@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_22_094312) do
+ActiveRecord::Schema.define(version: 2021_05_22_152501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contact_roles", force: :cascade do |t|
+    t.bigint "contact_id"
+    t.bigint "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_contact_roles_on_contact_id"
+    t.index ["role_id"], name: "index_contact_roles_on_role_id"
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string "name"
@@ -24,6 +33,14 @@ ActiveRecord::Schema.define(version: 2021_05_22_094312) do
     t.string "job_title"
     t.string "city"
     t.string "state"
+  end
+
+  create_table "incident_contacts", force: :cascade do |t|
+    t.bigint "incident_id"
+    t.bigint "contact_id"
+    t.string "title"
+    t.index ["contact_id"], name: "index_incident_contacts_on_contact_id"
+    t.index ["incident_id"], name: "index_incident_contacts_on_incident_id"
   end
 
   create_table "incidents", force: :cascade do |t|
@@ -40,4 +57,14 @@ ActiveRecord::Schema.define(version: 2021_05_22_094312) do
     t.string "state"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "contact_roles", "contacts"
+  add_foreign_key "contact_roles", "roles"
+  add_foreign_key "incident_contacts", "contacts"
+  add_foreign_key "incident_contacts", "incidents"
 end
