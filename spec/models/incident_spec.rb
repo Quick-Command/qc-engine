@@ -9,6 +9,11 @@ RSpec.describe Incident, type: :model do
     it { should validate_presence_of :incident_type }
   end
 
+  describe "relationships" do
+    it { should have_many(:incident_contacts) }
+    it { should have_many(:contacts).through(:incident_contacts) }
+  end
+
   describe "::class_methods" do
     describe "self.active(true/false)" do
       it "returns incidents with active status set to true" do
