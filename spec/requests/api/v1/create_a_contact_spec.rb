@@ -16,10 +16,11 @@ RSpec.describe 'Create A Contact Endpoint' do
           state: "CO",
           roles: ["#{role_1.title}", "#{role_2.title}"]
           })
-
-        post "/api/v1/contacts"
+        headers = {"CONTENT_TYPE" => "application/json"}
+        post "/api/v1/contacts", headers: headers, params: JSON.generate(contact_params)
 
         result = JSON.parse(response.body, symbolize_names: true)
+        contact_1 = Contact.last
 
         expect(response).to be_successful
         expect(response.status).to eq(200)
@@ -28,7 +29,7 @@ RSpec.describe 'Create A Contact Endpoint' do
         expect(result[:data].count).to eq(3)
         expect(result[:data]).to have_key(:id)
         expect(result[:data][:id]).to be_a(String)
-        expect(result[:data][:id]).to eq(contact1.id.to_s)
+        expect(result[:data][:id]).to eq(contact_1.id.to_s)
         expect(result[:data]).to have_key(:type)
         expect(result[:data][:type]).to eq("contact")
         expect(result[:data]).to have_key(:attributes)
@@ -49,7 +50,6 @@ RSpec.describe 'Create A Contact Endpoint' do
         expect(result[:data][:attributes][:roles]).to be_a(Hash)
         expect(result[:data][:attributes][:roles][:data]).to be_an(Array)
         expect(result[:data][:attributes][:roles][:data].first).to be_a(Hash)
-        expect(result[:data][:attributes][:roles][:data].first.keys).to be_a(Hash)
         expect(result[:data][:attributes][:roles][:data].first.keys).to eq([:id, :type, :attributes])
         expect(result[:data][:attributes][:roles][:data].first[:type]).to eq("role")
         expect(result[:data][:attributes][:roles][:data].first[:attributes]).to be_a(Hash)
