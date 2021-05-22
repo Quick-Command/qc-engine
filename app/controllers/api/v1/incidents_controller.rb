@@ -59,11 +59,9 @@ class Api::V1::IncidentsController < ApplicationController
     elsif params[:start_date].nil? || params[:start_date] == ""
       error = "Incident start date cannot be blank."
       render json: { error: error }, status: :not_found
-    elsif incident_params[:active] == false
-      if incident_params[:close_date].nil? || incident_params[:close_date] == ""
-        error = "An inactive incident needs a close date"
-        render json: { error: error }, status: :not_found
-      end
+    elsif incident_params[:close_date].nil? || incident_params[:close_date] == ""
+      error = "An inactive incident needs a close date"
+      render json: { error: error }, status: :not_found
     end
   end
 
