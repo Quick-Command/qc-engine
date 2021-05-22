@@ -81,6 +81,7 @@ The following is a depiction of our Database Schema
 - Hazmat Spill
 - Power Outage
 ​
+
 ## Types of Roles (a contact can be many roles)
 1. Incident Commander
 2. Safety Officer

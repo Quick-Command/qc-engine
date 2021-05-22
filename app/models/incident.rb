@@ -1,4 +1,7 @@
 class Incident < ApplicationRecord
+  has_many :incident_contacts
+  has_many :contacts, through: :incident_contacts
+  
   validates_presence_of :name, presence: true
   validates_presence_of :start_date, presence: true
   validates_presence_of :close_date, if: -> { self.active == false }
