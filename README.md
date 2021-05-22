@@ -54,12 +54,11 @@ To get the web application running, please follow these directions to set up you
 ## DB Schema
 The following is a depiction of our Database Schema
 
- ![db_schema](https://user-images.githubusercontent.com/23460878/118385615-12ebbc80-b5d6-11eb-82cd-e54491496c38.png)
+ ![db_schema](db/data/readme_docs/quickcommand_schema.png)
 
 ## Endpoints
-  ### QuickCommand API Contract
-​
-​
+  ### QuickCommand API Contract  
+
 | HTTP verbs | Paths  | Used for | Output |
 | ---------- | ------ | -------- | ------:|
 | GET | /api/v1/incidents?active=true | Get active incidents | [json](#active-incidents) |
@@ -84,134 +83,89 @@ The following is a depiction of our Database Schema
 ​
 ## Types of Roles (a contact can be many roles)
 1. Incident Commander
-2. PIO
-3. Safety Officer
-4. Liaison Officer
-5. Operations Chief
-6. Logistics Chief
-7. Finance Chief
-8. Planning Chief
+2. Safety Officer
+3. Liaison Officer
+4. Operations Chief
+5. Logistics Chief
 ​
 ## JSON Responses
 ​
 ## Active Incidents
 `GET /api/v1/incidents?active=true`
   ```json
-    {
-      "data": [
-          {
-              "id": "27",
-              "type": "incident",
-              "attributes": {
-                  "name": "Jim Creek Fire",
-                  "active": true,
-                  "incident_type": "Fire",
-                  "description": "2 alarm fire caused campfire embers",
-                  "location": "Jim Creek Trail",
-                  "start_date": "2020-10-10T00:00:00.000Z",
-                  "close_date": null
-              }
-          },
-          {
-              "id": "28",
-              "type": "incident",
-              "attributes": {
-                  "name": "Avery Substation - Summer black out",
-                  "active": true,
-                  "incident_type": "Power Outage",
-                  "description": "Outage for 12893 homes for 19 hours",
-                  "location": "Avery Substation",
-                  "start_date": "2020-11-10T00:00:00.000Z",
-                  "close_date": null
-              }
-          },
-          {
-              "id": "29",
-              "type": "incident",
-              "attributes": {
-                  "name": "5 car accident",
-                  "active": true,
-                  "incident_type": "Accident",
-                  "description": "Details in police report #PR097134834",
-                  "location": "2400 BLOCK W COLFAX AVE",
-                  "start_date": "2020-12-10T00:00:00.000Z",
-                  "close_date": null
-              }
-          }
-      ]
+  {
+    "data": [
+        {
+            "id": "6",
+            "type": "incident",
+            "attributes": {
+                "name": "Jim Creek Fire",
+                "active": true,
+                "incident_type": "Fire",
+                "description": "2 alarm fire caused campfire embers",
+                "start_date": "2020-10-10T00:00:00.000Z",
+                "close_date": null,
+                "location": "Jim Creek Trail",
+                "city": "Denver",
+                "state": "CO"
+            }
+        },
+        {
+            "id": "7",
+            "type": "incident",
+            "attributes": {
+                "name": "Avery Substation - Summer black out",
+                "active": true,
+                "incident_type": "Power Outage",
+                "description": "Outage for 12893 homes for 19 hours",
+                "start_date": "2020-11-10T00:00:00.000Z",
+                "close_date": null,
+                "location": "Avery Substation",
+                "city": "Denver ",
+                "state": "CO"
+            }
+        }
+    ]
   }
   ```
 
 ## Resolved Incidents
 `GET /api/v1/incidents?active=false`
   ```json
-  "data": [
-        {
-            "id": "1",
-            "type": "incident",
-            "attributes": {
-                "name": "October 2011 2.0 earthquake",
-                "active": false,
-                "incident_type": "Earthquake",
-                "description": "2.0 earthquake, facade damage to some buildings, 10 trees fell",
-                "location": "City Proper",
-                "start_date": "2020-01-10T00:00:00.000Z",
-                "close_date": "2020-11-05T00:00:00.000Z"
-            }
-        },
-        {
-            "id": "2",
-            "type": "incident",
-            "attributes": {
-                "name": "Bear Creek Park Oil Spill",
-                "active": false,
-                "incident_type": "Hazmat Spill",
-                "description": "Exxon manufacturing plant oil spill affected 500 sf",
-                "location": "Bear Creek Park",
-                "start_date": "2020-02-10T00:00:00.000Z",
-                "close_date": "2020-05-20T00:00:00.000Z"
-            }
-        },
-        {
-            "id": "3",
-            "type": "incident",
-            "attributes": {
-                "name": "Barker Distribution Substation - tree fall",
-                "active": false,
-                "incident_type": "Power Outage",
-                "description": "Tree feel on power grid, causing outage for 100 homes for 7 hours",
-                "location": "Barker Distribution Substation",
-                "start_date": "2020-03-10T00:00:00.000Z",
-                "close_date": "2020-03-20T00:00:00.000Z"
-            }
-        },
-        {
-            "id": "4",
-            "type": "incident",
-            "attributes": {
-                "name": "Del Camino - Rolling Blackout",
-                "active": false,
-                "incident_type": "Power Outage",
-                "description": "Outage for 1000 homes for 10 hours",
-                "location": "Del Camino ",
-                "start_date": "2020-04-10T00:00:00.000Z",
-                "close_date": "2020-05-10T00:00:00.000Z"
-            }
-        },
-        {
-            "id": "5",
-            "type": "incident",
-            "attributes": {
-                "name": "Desert Cove Fountain Valley Midway - Rolling blackout",
-                "active": false,
-                "incident_type": "Power Outage",
-                "description": "Outage for 1000 homes for under 1 hour",
-                "location": "Desert Cove Fountain Valley Midway",
-                "start_date": "2020-05-10T00:00:00.000Z",
-                "close_date": "2020-08-08T00:00:00.000Z"
-            }
-        }
+    {
+      "data": [
+          {
+              "id": "1",
+              "type": "incident",
+              "attributes": {
+                  "name": "October 2011 2.0 earthquake",
+                  "active": false,
+                  "incident_type": "Earthquake",
+                  "description": "2.0 earthquake, facade damage to some buildings, 10 trees fell",
+                  "start_date": "2020-01-10T00:00:00.000Z",
+                  "close_date": "2020-11-05T00:00:00.000Z",
+                  "location": "City Proper",
+                  "city": "Denver",
+                  "state": "CO"
+              }
+          },
+          {
+              "id": "5",
+              "type": "incident",
+              "attributes": {
+                  "name": "5 car accident",
+                  "active": false,
+                  "incident_type": "Accident",
+                  "description": "Details in police report #PR0977237619",
+                  "start_date": "2020-09-10T00:00:00.000Z",
+                  "close_date": "2020-10-10T00:00:00.000Z",
+                  "location": "W 6TH AVE / N PERRY ST",
+                  "city": "Denver ",
+                  "state": "CO"
+              }
+          }
       ]
+  }
   ```
 ​
 ## Create an Incident
@@ -224,23 +178,26 @@ The following is a depiction of our Database Schema
   "name": "Jim Creeks Fire",
   "incident_type": "Fire",
   "description": "5th alarm fire",
-  "location": "Denver, CO",
+  "location": "Jims Creek",
+  "city": "Denver",
+  "state": "CO",
   "start_date": "2020-05-01",
   "close_date": ""
    }
 ```
+* Required attributes: name, start date, incident type, city, state, and close date if active is false.
 * Return data
 ```json
   {
     "data": {
-        "id": "32",
+        "id": "34",
         "type": "incident",
         "attributes": {
             "name": "Jim Creeks Fire",
             "active": true,
             "incident_type": "Fire",
             "description": "5th alarm fire",
-            "location": "Denver, CO",
+            "location": "Jims Creek",
             "start_date": "2020-05-01T00:00:00.000Z",
             "close_date": null
         }
@@ -268,9 +225,11 @@ The following is a depiction of our Database Schema
             "active": false,
             "incident_type": "Earthquake",
             "description": "2.0 earthquake, facade damage to some buildings, 10 trees fell",
-            "location": "City Proper",
             "start_date": "2020-01-10T00:00:00.000Z",
-            "close_date": "2020-11-05T00:00:00.000Z"
+            "close_date": "2020-11-05T00:00:00.000Z",
+            "location": "City Proper",
+            "city": "Denver",
+            "state": "CO"
         }
     }
   }
@@ -279,23 +238,42 @@ The following is a depiction of our Database Schema
 ## Incident Details
 `GET /api/v1/incidents/:incident_id`
   ```json
+    {
+      "data": {
+          "id": "1",
+          "type": "incident",
+          "attributes": {
+              "name": "October 2011 2.0 earthquake",
+              "active": false,
+              "incident_type": "Earthquake",
+              "description": "2.0 earthquake, facade damage to some buildings, 10 trees fell",
+              "start_date": "2020-01-10T00:00:00.000Z",
+              "close_date": "2020-11-05T00:00:00.000Z",
+              "location": "City Proper",
+              "city": "Denver",
+              "state": "CO"
+          }
+      }
+  }
+  ```
+​## Contact Details
+`GET /api/v1/contacts/1`
+```json
   {
     "data": {
         "id": "1",
-        "type": "incident",
+        "type": "contact",
         "attributes": {
-            "name": "October 2011 2.0 earthquake",
-            "active": false,
-            "incident_type": "Earthquake",
-            "description": "2.0 earthquake, facade damage to some buildings, 10 trees fell",
-            "location": "City Proper",
-            "start_date": "2020-01-10T00:00:00.000Z",
-            "close_date": "2020-11-05T00:00:00.000Z"
+            "name": "Aaron Marks",
+            "email": "AMarks@emailgov.com",
+            "phone_number": " (221)830-7361",
+            "job_title": "City Manager",
+            "city": "Denver",
+            "state": "CO"
         }
     }
-  }
-  ```
-​
+}
+```
 ## Incident Contacts
 `GET /api/v1/incidents/:incident_id/contacts`
   ```json

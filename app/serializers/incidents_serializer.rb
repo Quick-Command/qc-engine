@@ -5,7 +5,9 @@ class IncidentsSerializer
               :active,
               :incident_type,
               :description,
-              :location,
               :start_date,
-              :close_date
+              :close_date,
+              :location,
+              :city,
+              :state
 end

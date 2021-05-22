@@ -40,7 +40,7 @@ class Api::V1::IncidentsController < ApplicationController
   private
 
   def incident_params
-    params.permit(:name, :active, :incident_type, :description, :location, :start_date, :close_date )
+    params.permit(:name, :active, :incident_type, :description, :location, :start_date, :close_date, :city, :state)
   end
 
   def validate_inicdent_params
@@ -50,17 +50,18 @@ class Api::V1::IncidentsController < ApplicationController
     elsif params[:incident_type].nil? || params[:incident_type] == ""
       error = "Incident type cannot be blank."
       render json: { error: error }, status: :not_found
-    elsif params[:location].nil? || params[:location] == ""
-      error = "Incident location cannot be blank."
+    elsif params[:city].nil? || params[:city] == ""
+      error = "Incident city cannot be blank."
+      render json: { error: error }, status: :not_found
+    elsif params[:state].nil? || params[:state] == ""
+      error = "Incident state cannot be blank."
       render json: { error: error }, status: :not_found
     elsif params[:start_date].nil? || params[:start_date] == ""
       error = "Incident start date cannot be blank."
       render json: { error: error }, status: :not_found
-    elsif incident_params[:active] == false
-      if incident_params[:close_date].nil? || incident_params[:close_date] == ""
-        error = "An inactive incident needs a close date"
-        render json: { error: error }, status: :not_found
-      end
+    elsif incident_params[:close_date].nil? || incident_params[:close_date] == ""
+      error = "An inactive incident needs a close date"
+      render json: { error: error }, status: :not_found
     end
   end
 
