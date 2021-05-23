@@ -69,6 +69,7 @@ The following is a depiction of our Database Schema
 | GET | /api/v1/incidents/:incident_id/contacts?role=ROLE  | Get a specific contact based on incident and role | [json](#search-incident-contact-by-role) |
 | POST | /api/v1/incidents  | Create a new incident | [json](#create-a-incident) |
 | POST | /api/v1/contacts  | Create a new contact | [json](#create-a-contact) |
+| POST | /api/v1/incidents/:incident_id/contacts/:contact_id  | Assign a Contact to an role in an Incident | [json](#assign-a-contact-to-an-incident) |
 | GET | /api/v1/contacts/:contact_id  | Get a contact's details | [json](#contact-details) |
 | PUT | /api/v1/contacts/:contact_id  | Update a contact's details | [json](#update-contact) |
 | GET | /api/v1/contacts?name=NAME  | Return contacts that match name query | [json](#search-contacts-name) |
@@ -258,24 +259,24 @@ The following is a depiction of our Database Schema
   }
 ```
 
-​## Contact Details
+## Contact Details
 `GET /api/v1/contacts/1`
-```json
-  {
-    "data": {
-        "id": "1",
-        "type": "contact",
-        "attributes": {
-            "name": "Aaron Marks",
-            "email": "AMarks@emailgov.com",
-            "phone_number": " (221)830-7361",
-            "job_title": "City Manager",
-            "city": "Denver",
-            "state": "CO"
-        }
-    }
-}
-```
+  ```json
+    {
+      "data": {
+          "id": "1",
+          "type": "contact",
+          "attributes": {
+              "name": "Aaron Marks",
+              "email": "AMarks@emailgov.com",
+              "phone_number": " (221)830-7361",
+              "job_title": "City Manager",
+              "city": "Denver",
+              "state": "CO"
+          }
+      }
+  }
+  ```
 
 ## Create a Contact
 `POST /api/v1/contacts`
@@ -328,46 +329,51 @@ The following is a depiction of our Database Schema
       }
     ```
 
+## Assign a Contact to an Incident
+`POST /api/v1/incidents/:incident_id/contacts/:contact_id`
 
-
-## Incident Contacts
-`GET /api/v1/incidents/:incident_id/contacts`
+* Body
   ```json
-  {
-    "data": [
-      {
-        "data": {
-        "id": "5",
-        "type": "contact",
+    {"title": "Safety Officer"}
+  ```
+* Return
+  ```json
+    {
+      "data": {
+        "id": "1",
+        "type": "incident_contact",
         "attributes": {
-            "name": "Wells Fergi",
-            "email": "wfergi@email.com",
-            "phone_number": "123-456-7890",
-            "job_title": "Fire Commander",
+            "name": "Aaron Marks",
+            "title": "Safety Officer",
+            "email": "AMarks@emailgov.com",
+            "phone_number": " (221)830-7361",
             "city": "Denver",
             "state": "CO",
-            "roles": {
-                "data": [
-                    {
-                        "id": "1",
-                        "type": "role",
-                        "attributes": {
-                            "title": "Incident Commander"
-                        }
-                    },
-                    {
-                        "id": "2",
-                        "type": "role",
-                        "attributes": {
-                            "title": "Safety Officer"
-                        }
-                    }
-                ]
-              }
-            }
-          }
+            "distance_miles": "20",
+            "distance_minutes": "40"
         }
-    ]
+    }
+  }
+  ```
+
+## Incident Contact Details
+`GET /api/v1/incidents/:incident_id/contacts/:contact_id`
+  ```json
+    {
+      "data": {
+        "id": "1",
+        "type": "incident_contact",
+        "attributes": {
+            "name": "Aaron Marks",
+            "title": "Safety Officer",
+            "email": "AMarks@emailgov.com",
+            "phone_number": " (221)830-7361",
+            "city": "Denver",
+            "state": "CO",
+            "distance_miles": "20",
+            "distance_minutes": "40"
+        }
+    }
   }
   ```
 ## Built With
