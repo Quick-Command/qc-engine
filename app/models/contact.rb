@@ -9,4 +9,13 @@ class Contact < ApplicationRecord
   validates_presence_of :phone_number, presence: true
   validates_presence_of :city, presence: true
   validates_presence_of :state, presence: true
+
+  def assigned_to_active_incident?
+    active_incidents = self.incidents.where(active: true)
+    if active_incidents.empty?
+      false
+    else
+      true
+    end 
+  end
 end
