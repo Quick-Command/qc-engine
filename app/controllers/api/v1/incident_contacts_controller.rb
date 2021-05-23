@@ -24,7 +24,8 @@ class Api::V1::IncidentContactsController < ApplicationController
       render json: {error: "Contact is not assigned to incident"}, status: :not_found
     else
       contact = Contact.find(incident_contact_params[:contact_id])
-      render json: IncidentContactSerializer.new(contact, {params: {distance_miles: distance_miles, distance_minutes: distance_minutes, title: incident_contact_params[:title]}})
+      incident_contact = incident_contact_check.first
+      render json: IncidentContactSerializer.new(contact, {params: {distance_miles: distance_miles, distance_minutes: distance_minutes, title: incident_contact.title}})
     end
   end
 
