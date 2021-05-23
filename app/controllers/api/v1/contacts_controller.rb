@@ -13,6 +13,9 @@ class Api::V1::ContactsController < ApplicationController
         role = Role.find_or_create_by(title: role)
         ContactRole.create(contact_id: contact.id, role_id: role.id)
       end
+      role = Role.find_or_create_by(title: contact_params[:job_title])
+      ContactRole.create(contact_id: contact.id, role_id: role.id)
+      
       render json:ContactSerializer.new(contact)
     else
       render json: {error: "Name, email, phone, city, or state cannot be blank"}, status: 400
