@@ -64,14 +64,13 @@ The following is a depiction of our Database Schema
 | GET | /api/v1/incidents?active=true | Get active incidents | [json](#active-incidents) |
 | GET | /api/v1/incidents?active=false | Get resolved incidents | [json](#resolved-incidents) |
 | GET | /api/v1/incidents/:incident_id  | Get an incident's details | [json](#incident-details) |
-| PUT | /api/v1/incidents/:incident_id  | Update an incident's details | [json](#incident-details) |
+| PATCH | /api/v1/incidents/:incident_id  | Update an incident's details | [json](#incident-details) |
 | GET | /api/v1/incidents/:incident_id/contacts  | Get an incident's contacts and role in incident | [json](#incident-contacts) |
 | GET | /api/v1/incidents/1/contact_search?role=ROLE  | Get a specific contact based on incident and role | [json](#search-incident-contact-by-role) |
 | POST | /api/v1/incidents  | Create a new incident | [json](#create-a-incident) |
 | POST | /api/v1/contacts  | Create a new contact | [json](#create-a-contact) |
 | POST | /api/v1/incidents/:incident_id/contacts/:contact_id  | Assign a Contact to an role in an Incident | [json](#assign-a-contact-to-an-incident) |
 | GET | /api/v1/contacts/:contact_id  | Get a contact's details | [json](#contact-details) |
-| PUT | /api/v1/contacts/:contact_id  | Update a contact's details | [json](#update-contact) |
 | GET | /api/v1/contacts?name=NAME  | Return contacts that match name query | [json](#search-contacts-name) |
 | GET | /api/v1/contacts?role=ROLE  | Return contacts that match role query | [json](#search-contact-role) |
 
