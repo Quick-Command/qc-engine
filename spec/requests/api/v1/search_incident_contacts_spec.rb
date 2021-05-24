@@ -18,7 +18,7 @@ RSpec.describe "Search for a contact by role" do
       contact_4.roles << role_2
       contact_5.roles << role_2
 
-      get "/api/v1/contacts/contact_search?role=FFi"
+      get "/api/v1/incidents/:incident_id/contacts/contact_search?role=FFi"
       expect(response).to be_successful
       contacts = JSON.parse(response.body, symbolize_names:true)
 
@@ -54,7 +54,7 @@ RSpec.describe "Search for a contact by role" do
       contact_4.roles << role_2
       contact_5.roles << role_2
 
-      get "/api/v1/contacts/contact_search?role=ComM"
+      get "/api/v1/contacts/incidents/:incident_id/contact_search?role=ComM"
       expect(response).to be_successful
 
       contacts = JSON.parse(response.body, symbolize_names:true)
