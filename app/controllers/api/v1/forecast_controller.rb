@@ -1,7 +1,7 @@
 class Api::V1::ForecastController < ApplicationController
   def index
-    return error("Invalid location parameter") if ForecastFacade.invalid_location?(params)
     weather = ForecastFacade.get_forecast(location)
+    return error("Invalid location. Please enter both city and state.") if ForecastFacade.invalid_location?(params)
 
     render json: ForecastSerializer.new(weather)
   end
