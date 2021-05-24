@@ -41,7 +41,7 @@ RSpec.describe "Search for a contact by role" do
     it "should return a contact that matches the role if they are not assigned to an active incident" do
       role_1 = create(:role, title: "Incident Commander")
       role_2 = create(:role, title: "Safety Officer")
-      incident = create(:incident)
+      incident = create(:incident, active: true)
       contact_1 = create(:contact, job_title: "Incident Commander")
       contact_2 = create(:contact, job_title: "Incident Commander")
       contact_3 = create(:contact, job_title: "Incident Commander")
