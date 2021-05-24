@@ -27,7 +27,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"data":{"id":null,"type":"forecast","attributes":{"daily_weather":[{"date":"2021-05-24","sunrise":"2021-05-24
-        06:42:31 -0500","sunset":"2021-05-24 21:15:57 -0500","min_temp":33.39,"max_temp":59.92,"humidity":20,"wind_speed":15.93,"wind_deg":256,"wind_gust":23.87,"conditions":"clear
+        06:42:31 -0500","sunset":"2021-05-24 21:15:57 -0500","min_temp":33.39,"max_temp":60.76,"humidity":18,"wind_speed":15.93,"wind_deg":256,"wind_gust":23.87,"conditions":"clear
         sky","precipitation":0},{"date":"2021-05-25","sunrise":"2021-05-25 06:41:55
         -0500","sunset":"2021-05-25 21:16:46 -0500","min_temp":36.36,"max_temp":63.99,"humidity":22,"wind_speed":13.13,"wind_deg":179,"wind_gust":18.97,"conditions":"clear
         sky","precipitation":0.27},{"date":"2021-05-26","sunrise":"2021-05-26 06:41:20
@@ -37,5 +37,5 @@ http_interactions:
         rain","precipitation":0.23},{"date":"2021-05-28","sunrise":"2021-05-28 06:40:16
         -0500","sunset":"2021-05-28 21:19:07 -0500","min_temp":41.47,"max_temp":68.4,"humidity":20,"wind_speed":15.64,"wind_deg":206,"wind_gust":19.89,"conditions":"scattered
         clouds","precipitation":0.04}]}}}'
-  recorded_at: Mon, 24 May 2021 19:57:39 GMT
+  recorded_at: Mon, 24 May 2021 20:41:19 GMT
 recorded_with: VCR 6.0.0

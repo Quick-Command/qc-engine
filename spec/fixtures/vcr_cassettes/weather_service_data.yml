@@ -23,19 +23,19 @@ http_interactions:
       X-Content-Type-Options:
       - nosniff
       Content-Length:
-      - '1289'
+      - '1297'
     body:
       encoding: UTF-8
-      string: '{"data":{"id":null,"type":"forecast","attributes":{"daily_weather":[{"date":"2021-05-20","sunrise":"2021-05-20
-        06:41:01 -0500","sunset":"2021-05-20 21:12:15 -0500","min_temp":53.15,"max_temp":79.65,"humidity":22,"wind_speed":17.58,"wind_deg":151,"wind_gust":23.4,"conditions":"scattered
-        clouds","precipitation":0.2},{"date":"2021-05-21","sunrise":"2021-05-21 06:40:16
-        -0500","sunset":"2021-05-21 21:13:09 -0500","min_temp":56.59,"max_temp":82.36,"humidity":17,"wind_speed":23.94,"wind_deg":168,"wind_gust":42.41,"conditions":"overcast
-        clouds","precipitation":0},{"date":"2021-05-22","sunrise":"2021-05-22 06:39:33
-        -0500","sunset":"2021-05-22 21:14:02 -0500","min_temp":57.36,"max_temp":74.86,"humidity":40,"wind_speed":20.07,"wind_deg":149,"wind_gust":32.03,"conditions":"light
-        rain","precipitation":0.72},{"date":"2021-05-23","sunrise":"2021-05-23 06:38:52
-        -0500","sunset":"2021-05-23 21:14:53 -0500","min_temp":56.35,"max_temp":75.43,"humidity":10,"wind_speed":20.49,"wind_deg":205,"wind_gust":37.27,"conditions":"clear
-        sky","precipitation":0.32},{"date":"2021-05-24","sunrise":"2021-05-24 06:38:13
-        -0500","sunset":"2021-05-24 21:15:45 -0500","min_temp":51.4,"max_temp":78.08,"humidity":9,"wind_speed":11.65,"wind_deg":44,"wind_gust":21.97,"conditions":"clear
-        sky","precipitation":0}]}}}'
-  recorded_at: Thu, 20 May 2021 22:40:39 GMT
+      string: '{"data":{"id":null,"type":"forecast","attributes":{"daily_weather":[{"date":"2021-05-24","sunrise":"2021-05-24
+        06:38:13 -0500","sunset":"2021-05-24 21:15:45 -0500","min_temp":49.78,"max_temp":72.99,"humidity":21,"wind_speed":11.12,"wind_deg":71,"wind_gust":9.75,"conditions":"clear
+        sky","precipitation":0},{"date":"2021-05-25","sunrise":"2021-05-25 06:37:35
+        -0500","sunset":"2021-05-25 21:16:35 -0500","min_temp":54.61,"max_temp":77.52,"humidity":21,"wind_speed":12.33,"wind_deg":102,"wind_gust":12.5,"conditions":"light
+        rain","precipitation":0.63},{"date":"2021-05-26","sunrise":"2021-05-26 06:36:59
+        -0500","sunset":"2021-05-26 21:17:24 -0500","min_temp":56.86,"max_temp":79.79,"humidity":28,"wind_speed":12.53,"wind_deg":154,"wind_gust":18.54,"conditions":"overcast
+        clouds","precipitation":0.55},{"date":"2021-05-27","sunrise":"2021-05-27 06:36:25
+        -0500","sunset":"2021-05-27 21:18:13 -0500","min_temp":56.57,"max_temp":78.55,"humidity":23,"wind_speed":10.94,"wind_deg":69,"wind_gust":16.69,"conditions":"scattered
+        clouds","precipitation":0.08},{"date":"2021-05-28","sunrise":"2021-05-28 06:35:53
+        -0500","sunset":"2021-05-28 21:19:00 -0500","min_temp":58.26,"max_temp":83.73,"humidity":13,"wind_speed":12.48,"wind_deg":100,"wind_gust":14.07,"conditions":"broken
+        clouds","precipitation":0.08}]}}}'
+  recorded_at: Mon, 24 May 2021 20:41:25 GMT
 recorded_with: VCR 6.0.0
