@@ -29,6 +29,10 @@ class Api::V1::IncidentContactsController < ApplicationController
     end
   end
 
+  def contacts
+    
+  end
+
   private
 
   def incident_contact_params

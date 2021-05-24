@@ -19,9 +19,8 @@ class Contact < ApplicationRecord
     end
   end
 
-  def self.remove_active_contacts
-    joins(:incidents)
-    .where.not('incidents.active = ?', true)
+  def self.contacts_assigned_to_active_incidents
+    joins(:incidents).where("incidents.active = ?", true)
   end
 
   def self.find_by_role(role_query)
