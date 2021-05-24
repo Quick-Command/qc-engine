@@ -14,6 +14,7 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.filter_sensitive_data('WEATHER_MICROSERVICE_URL') { ENV['WEATHER_MICROSERVICE_URL'] }
   config.allow_http_connections_when_no_cassette = true
+  config.default_cassette_options = { re_record_interval: 5.days }
 end
 # Add additional requires below this line. Rails is not loaded until this point!
 
