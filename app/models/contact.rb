@@ -16,6 +16,20 @@ class Contact < ApplicationRecord
       false
     else
       true
-    end 
+    end
+  end
+
+  def self.remove_active_contacts
+    joins(:incidents)
+    .where.not('incidents.active = ?', true)
+  end
+
+  def self.find_by_role(role_query)
+    select('contacts.*')
+    .joins(:contact_roles)
+    .select("contact_roles.contact_id")
+    .joins(:roles)
+    .select('roles.title')
+    .where("lower(roles.title) LIKE ?", "%#{role_query.downcase}%")
   end
 end
