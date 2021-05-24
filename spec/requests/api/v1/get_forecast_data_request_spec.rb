@@ -56,7 +56,7 @@ RSpec.describe 'Get Forecast' do
         result = JSON.parse(response.body, symbolize_names: true)
 
         expect(response.status).to eq(400)
-        expect(result[:error]).to eq("Location does not exist. Please enter valid location.")
+        expect(result[:error]).to eq("Please enter a valid location with city and state.")
       end
     end
 
@@ -67,7 +67,7 @@ RSpec.describe 'Get Forecast' do
         result = JSON.parse(response.body, symbolize_names: true)
 
         expect(response.status).to eq(400)
-        expect(result[:error]).to eq("Location does not exist. Please enter valid location.")
+        expect(result[:error]).to eq("Please enter a valid location with city and state.")
       end
     end
 
