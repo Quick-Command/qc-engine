@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :contacts, only: [:show, :create]
       resources :incidents, only: [:index, :create, :show, :update]
+      resources :forecast, only: [:index]
     end
   end
 end
