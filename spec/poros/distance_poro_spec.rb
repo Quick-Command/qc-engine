@@ -1,17 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe Forecast do
+RSpec.describe Distance do
   it 'exists and has attributes' do
     data = {
             "data": {
-            "attributes": {
-                                {
+                "attributes": {
+
                                   "origin": "Denver,CO",
                                   "destination": "Chicago,IL",
                                   "distance_in_miles": 1300,
                                   "drive_time": "18 hours, 24 minutes away."
-                                }
-                            }
+
+                              }
                           }
                         }
 
