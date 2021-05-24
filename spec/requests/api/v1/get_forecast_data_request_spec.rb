@@ -46,4 +46,64 @@ RSpec.describe 'Get Forecast' do
       end
     end
   end
+
+  describe 'sad path' do
+    it 'returns an error response if user sends an empty string for location' do
+      VCR.use_cassette('invalid_location') do
+        location = ''
+        get "/api/v1/forecast?location=#{location}"
+
+        result = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response.status).to eq(400)
+        expect(result[:error]).to eq("Location does not exist. Please enter valid location.")
+      end
+    end
+
+    it 'returns an error response if user sends nothing for location' do
+      VCR.use_cassette('no_location') do
+        get "/api/v1/forecast"
+
+        result = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response.status).to eq(400)
+        expect(result[:error]).to eq("Location does not exist. Please enter valid location.")
+      end
+    end
+
+    it 'returns an error response if no city is provided within the location' do
+      VCR.use_cassette('no_city_in_location') do
+        location = 'co'
+        get "/api/v1/forecast?location=#{location}"
+
+        result = JSON.parse(response.body, symbolize_names: true)
+        expect(response.status).to eq(400)
+        expect(result[:error]).to eq("Invalid location. Please enter both city and state.")
+      end
+    end
+
+    it 'returns an error response if no state code is provided within the location' do
+      VCR.use_cassette('no_state_code_in_location') do
+        location = 'denver'
+        get "/api/v1/forecast?location=#{location}"
+        result = JSON.parse(response.body, symbolize_names: true)
+        expect(response.status).to eq(400)
+        expect(result[:error]).to eq("Invalid location. Please enter both city and state.")
+      end
+    end
+  end
+
+  describe 'edge case path' do
+    it 'returns an error response if the location does not match anything' do
+      VCR.use_cassette('crazy_location') do
+        location = '[]!!!'
+        get "/api/v1/forecast?location=#{location}"
+
+        result = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response.status).to eq(400)
+        expect(result[:error]).to eq("Location does not exist. Please enter valid location.")
+      end
+    end
+  end
 end
