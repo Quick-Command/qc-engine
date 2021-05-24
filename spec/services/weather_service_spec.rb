@@ -36,5 +36,29 @@ RSpec.describe WeatherService do
         expect(response[:data][:attributes][:daily_weather].first[:precipitation]).to be_a(Numeric)
       end
     end
+
+    it "fetches distance data for a given locations" do
+      VCR.use_cassette("denver_to_chicago") do
+        origin = 'Denver,CO'
+        destination = 'Chicago,IL'
+        response = WeatherService.fetch_distacne(origin, destination)
+        expect(response).to be_a(Hash)
+        expect(response).to have_key(:data)
+        expect(response[:data]).to be_a(Hash)
+        expect(response[:data].keys).to eq([:id, :type, :attributes])
+        expect(response[:data][:id]).to eq(nil)
+        expect(response[:data][:type]).to be_a(String)
+        expect(response[:data][:type]).to eq('distance')
+        expect(response[:data][:attributes]).to be_a(Hash)
+        expect(response[:data][:attributes].keys.count).to eq(4)
+
+        expect(response[:data][:attributes].keys).to eq([:origin, :destination,
+                                                          :distance_in_miles, :drive_time])
+        expect(response[:data][:attributes][:origin]).to be_a(String)
+        expect(response[:data][:attributes][:destination]).to be_a(String)
+        expect(response[:data][:attributes][:distance_in_miles]).to be_a(Numeric)
+        expect(response[:data][:attributes][:drive_time]).to be_a(String)
+      end
+    end
   end
 end
