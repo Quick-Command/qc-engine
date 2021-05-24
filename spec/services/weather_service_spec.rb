@@ -36,24 +36,5 @@ RSpec.describe WeatherService do
         expect(response[:data][:attributes][:daily_weather].first[:precipitation]).to be_a(Numeric)
       end
     end
-
-    it 'can test the data structure of the API data received from the call' do
-      VCR.use_cassette("weather_service_data") do
-        location = 'Denver,CO'
-        response = WeatherService.fetch_weather(location)
-
-        expect(response[:data][:attributes][:daily_weather].first[:date]).to eq("2021-05-20")
-        expect(response[:data][:attributes][:daily_weather].first[:sunrise]).to eq("2021-05-20 06:41:01 -0500")
-        expect(response[:data][:attributes][:daily_weather].first[:sunset]).to eq("2021-05-20 21:12:15 -0500")
-        expect(response[:data][:attributes][:daily_weather].first[:min_temp]).to eq(53.15)
-        expect(response[:data][:attributes][:daily_weather].first[:max_temp]).to eq(79.65)
-        expect(response[:data][:attributes][:daily_weather].first[:humidity]).to eq(22)
-        expect(response[:data][:attributes][:daily_weather].first[:wind_speed]).to eq(17.58)
-        expect(response[:data][:attributes][:daily_weather].first[:wind_deg]).to eq(151)
-        expect(response[:data][:attributes][:daily_weather].first[:wind_gust]).to eq(23.4)
-        expect(response[:data][:attributes][:daily_weather].first[:conditions]).to eq("scattered clouds")
-        expect(response[:data][:attributes][:daily_weather].first[:preciptation]).to eq(nil)
-      end
-    end
   end
 end
