@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :contacts, only: [:show, :create]
       resources :incidents, only: [:index, :create, :show, :update]
       resources :forecast, only: [:index]
+      resources :distance, only: [:index]
     end
   end
 end

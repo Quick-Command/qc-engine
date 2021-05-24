@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: WEATHER_MICROSERVICE_URLapi/v1/forecast_data?location=co
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.4.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1294'
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
+      Date:
+      - Mon, 24 May 2021 22:38:37 GMT
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":null,"type":"forecast","attributes":{"daily_weather":[{"date":"2021-05-24","sunrise":"2021-05-24
+        11:42:31 +0000","sunset":"2021-05-25 02:15:57 +0000","min_temp":33.39,"max_temp":61.95,"humidity":19,"wind_speed":15.93,"wind_deg":256,"wind_gust":23.87,"conditions":"clear
+        sky","precipitation":0},{"date":"2021-05-25","sunrise":"2021-05-25 11:41:55
+        +0000","sunset":"2021-05-26 02:16:46 +0000","min_temp":36.36,"max_temp":63.99,"humidity":22,"wind_speed":13.13,"wind_deg":179,"wind_gust":18.97,"conditions":"clear
+        sky","precipitation":0.27},{"date":"2021-05-26","sunrise":"2021-05-26 11:41:20
+        +0000","sunset":"2021-05-27 02:17:34 +0000","min_temp":40.6,"max_temp":63.37,"humidity":31,"wind_speed":17.94,"wind_deg":271,"wind_gust":27.18,"conditions":"overcast
+        clouds","precipitation":0.23},{"date":"2021-05-27","sunrise":"2021-05-27 11:40:47
+        +0000","sunset":"2021-05-28 02:18:21 +0000","min_temp":39.45,"max_temp":62.28,"humidity":28,"wind_speed":11.3,"wind_deg":258,"wind_gust":24.25,"conditions":"light
+        rain","precipitation":0.23},{"date":"2021-05-28","sunrise":"2021-05-28 11:40:16
+        +0000","sunset":"2021-05-29 02:19:07 +0000","min_temp":41.47,"max_temp":68.4,"humidity":20,"wind_speed":15.64,"wind_deg":206,"wind_gust":19.89,"conditions":"scattered
+        clouds","precipitation":0.04}]}}}'
+  recorded_at: Mon, 24 May 2021 22:38:37 GMT
+recorded_with: VCR 6.0.0
