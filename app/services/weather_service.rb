@@ -11,7 +11,7 @@ class WeatherService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def self.fetch_distacne(origin, destination)
+  def self.fetch_distance(origin, destination)
     response = weather_connection.get("/api/v1/distance?origin=#{origin}&destination=#{destination}")
 
     JSON.parse(response.body, symbolize_names: true)

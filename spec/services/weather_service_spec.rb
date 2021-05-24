@@ -41,7 +41,7 @@ RSpec.describe WeatherService do
       VCR.use_cassette("denver_to_chicago") do
         origin = 'Denver,CO'
         destination = 'Chicago,IL'
-        response = WeatherService.fetch_distacne(origin, destination)
+        response = WeatherService.fetch_distance(origin, destination)
         expect(response).to be_a(Hash)
         expect(response).to have_key(:data)
         expect(response[:data]).to be_a(Hash)
