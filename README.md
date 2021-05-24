@@ -64,14 +64,13 @@ The following is a depiction of our Database Schema
 | GET | /api/v1/incidents?active=true | Get active incidents | [json](#active-incidents) |
 | GET | /api/v1/incidents?active=false | Get resolved incidents | [json](#resolved-incidents) |
 | GET | /api/v1/incidents/:incident_id  | Get an incident's details | [json](#incident-details) |
-| PUT | /api/v1/incidents/:incident_id  | Update an incident's details | [json](#incident-details) |
+| PATCH | /api/v1/incidents/:incident_id  | Update an incident's details | [json](#incident-details) |
 | GET | /api/v1/incidents/:incident_id/contacts  | Get an incident's contacts and role in incident | [json](#incident-contacts) |
-| GET | /api/v1/incidents/:incident_id/contacts?role=ROLE  | Get a specific contact based on incident and role | [json](#search-incident-contact-by-role) |
+| GET | /api/v1/incidents/1/contact_search?role=ROLE  | Get a specific contact based on incident and role | [json](#search-incident-contact-by-role) |
 | POST | /api/v1/incidents  | Create a new incident | [json](#create-a-incident) |
 | POST | /api/v1/contacts  | Create a new contact | [json](#create-a-contact) |
 | POST | /api/v1/incidents/:incident_id/contacts/:contact_id  | Assign a Contact to an role in an Incident | [json](#assign-a-contact-to-an-incident) |
 | GET | /api/v1/contacts/:contact_id  | Get a contact's details | [json](#contact-details) |
-| PUT | /api/v1/contacts/:contact_id  | Update a contact's details | [json](#update-contact) |
 | GET | /api/v1/contacts?name=NAME  | Return contacts that match name query | [json](#search-contacts-name) |
 | GET | /api/v1/contacts?role=ROLE  | Return contacts that match role query | [json](#search-contact-role) |
 
@@ -376,6 +375,319 @@ The following is a depiction of our Database Schema
     }
   }
   ```
+
+## Incident Contacts
+`GET /api/v1/incidents/:incident_id/contacts`
+  ```json
+  {
+    "data": [
+        {
+            "id": "1",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Aaron Marks",
+                "title": "Inicdent Commander",
+                "email": "AMarks@emailgov.com",
+                "phone_number": " (221)830-7361",
+                "city": "Denver",
+                "state": "CO",
+                "distance_miles": "16",
+                "distance_minutes": "49"
+            }
+        },
+        {
+            "id": "2",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Aly Snow",
+                "title": "Safety Officer",
+                "email": "ASnow@emailgov.com",
+                "phone_number": " (485)062-4319",
+                "city": "Denver",
+                "state": "CO",
+                "distance_miles": "68",
+                "distance_minutes": "36"
+            }
+        },
+        {
+            "id": "3",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Brian Blue",
+                "title": "Liaison Officer",
+                "email": "BBlue@emailgov.com",
+                "phone_number": " (852)148-9979",
+                "city": "Aurora",
+                "state": "CO",
+                "distance_miles": "83",
+                "distance_minutes": "45"
+            }
+        },
+        {
+            "id": "4",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Brie Button",
+                "title": "Operations Cheif",
+                "email": "BButton@emailgov.com",
+                "phone_number": " (672)832-4790",
+                "city": "Littleton",
+                "state": "CO",
+                "distance_miles": "68",
+                "distance_minutes": "77"
+            }
+        },
+        {
+            "id": "5",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Carrie Washington",
+                "title": "Logistics Chief",
+                "email": "CWashington@emailgov.com",
+                "phone_number": " (782)602-3793",
+                "city": "Boulder",
+                "state": "CO",
+                "distance_miles": "26",
+                "distance_minutes": "84"
+            }
+        }
+    ]
+  }
+  ```
+
+## Search Incident Contact by Role
+`GET /api/v1/incidents/1/contact_search?role=Commander`
+```json
+{
+    "data": [
+        {
+            "id": "1",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Aaron Marks",
+                "title": "Inicdent Commander",
+                "email": "AMarks@emailgov.com",
+                "phone_number": " (221)830-7361",
+                "city": "Denver",
+                "state": "CO",
+                "distance_miles": "28",
+                "distance_minutes": "100"
+            }
+        },
+        {
+            "id": "1",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Aaron Marks",
+                "title": "Inicdent Commander",
+                "email": "AMarks@emailgov.com",
+                "phone_number": " (221)830-7361",
+                "city": "Denver",
+                "state": "CO",
+                "distance_miles": "47",
+                "distance_minutes": "98"
+            }
+        },
+        {
+            "id": "4",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Brie Button",
+                "title": "Operations Cheif",
+                "email": "BButton@emailgov.com",
+                "phone_number": " (672)832-4790",
+                "city": "Littleton",
+                "state": "CO",
+                "distance_miles": "93",
+                "distance_minutes": "96"
+            }
+        },
+        {
+            "id": "4",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Brie Button",
+                "title": "Operations Cheif",
+                "email": "BButton@emailgov.com",
+                "phone_number": " (672)832-4790",
+                "city": "Littleton",
+                "state": "CO",
+                "distance_miles": "39",
+                "distance_minutes": "59"
+            }
+        },
+        {
+            "id": "4",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Brie Button",
+                "title": "Operations Cheif",
+                "email": "BButton@emailgov.com",
+                "phone_number": " (672)832-4790",
+                "city": "Littleton",
+                "state": "CO",
+                "distance_miles": "26",
+                "distance_minutes": "28"
+            }
+        },
+        {
+            "id": "6",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Carl Jr",
+                "title": null,
+                "email": "CJr@emailgov.com",
+                "phone_number": " (366)338-9913",
+                "city": "Denver",
+                "state": "CO",
+                "distance_miles": "11",
+                "distance_minutes": "15"
+            }
+        },
+        {
+            "id": "6",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Carl Jr",
+                "title": null,
+                "email": "CJr@emailgov.com",
+                "phone_number": " (366)338-9913",
+                "city": "Denver",
+                "state": "CO",
+                "distance_miles": "6",
+                "distance_minutes": "89"
+            }
+        },
+        {
+            "id": "8",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Diane Furr",
+                "title": null,
+                "email": "DFurr@emailgov.com",
+                "phone_number": " (227)860-8382",
+                "city": "Aurora",
+                "state": "CO",
+                "distance_miles": "32",
+                "distance_minutes": "49"
+            }
+        },
+        {
+            "id": "8",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Diane Furr",
+                "title": null,
+                "email": "DFurr@emailgov.com",
+                "phone_number": " (227)860-8382",
+                "city": "Aurora",
+                "state": "CO",
+                "distance_miles": "1",
+                "distance_minutes": "12"
+            }
+        },
+        {
+            "id": "9",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Eugene Maroon",
+                "title": null,
+                "email": "EMaroon@emailgov.com",
+                "phone_number": " (721)386-6969",
+                "city": "Littleton",
+                "state": "CO",
+                "distance_miles": "31",
+                "distance_minutes": "74"
+            }
+        },
+        {
+            "id": "9",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Eugene Maroon",
+                "title": null,
+                "email": "EMaroon@emailgov.com",
+                "phone_number": " (721)386-6969",
+                "city": "Littleton",
+                "state": "CO",
+                "distance_miles": "40",
+                "distance_minutes": "74"
+            }
+        },
+        {
+            "id": "11",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Fran Moore",
+                "title": null,
+                "email": "FMoore@emailgov.com",
+                "phone_number": " (437)750-2732",
+                "city": "Denver",
+                "state": "CO",
+                "distance_miles": "47",
+                "distance_minutes": "84"
+            }
+        },
+        {
+            "id": "11",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Fran Moore",
+                "title": null,
+                "email": "FMoore@emailgov.com",
+                "phone_number": " (437)750-2732",
+                "city": "Denver",
+                "state": "CO",
+                "distance_miles": "36",
+                "distance_minutes": "46"
+            }
+        },
+        {
+            "id": "26",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Mike Moon",
+                "title": null,
+                "email": "MMoon@emailgov.com",
+                "phone_number": " (651)563-1511",
+                "city": "Denver",
+                "state": "CO",
+                "distance_miles": "25",
+                "distance_minutes": "74"
+            }
+        },
+        {
+            "id": "27",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Neil Buttstrong",
+                "title": null,
+                "email": "NButtstrong@emailgov.com",
+                "phone_number": " (220)609-0224",
+                "city": "Denver",
+                "state": "CO",
+                "distance_miles": "59",
+                "distance_minutes": "38"
+            }
+        },
+        {
+            "id": "32",
+            "type": "incident_contact",
+            "attributes": {
+                "name": "Patrick Clover",
+                "title": null,
+                "email": "PClover@emailgov.com",
+                "phone_number": " (149)775-6018",
+                "city": "Boulder",
+                "state": "CO",
+                "distance_miles": "28",
+                "distance_minutes": "73"
+            }
+        }
+    ]
+}
+```
+
 ## Built With
 - Ruby
 - Rails
