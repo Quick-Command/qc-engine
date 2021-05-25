@@ -41,7 +41,7 @@ RSpec.describe 'Update an Incident Contact Endpoint' do
         expect(result[:data].count).to eq(3)
         expect(result[:data]).to have_key(:id)
         expect(result[:data][:id]).to be_a(String)
-        expect(result[:data][:id]).to eq(contact.id.to_s)
+        expect(result[:data][:id]).to eq(contact_1.id.to_s)
         expect(result[:data]).to have_key(:type)
         expect(result[:data][:type]).to eq("incident_contact")
         expect(result[:data]).to have_key(:attributes)
