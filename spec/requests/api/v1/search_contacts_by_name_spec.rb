@@ -6,7 +6,7 @@ RSpec.describe "Search for a contact by name" do
 
       contact = create(:contact)
 
-      get "/api/v1/contacts/find?name=#{contact.name}"
+      get "/api/v1/contacts/search?name=#{contact.name}"
       expect(response).to be_successful
       expect(response.status).to eq(200)
 
@@ -23,27 +23,29 @@ RSpec.describe "Search for a contact by name" do
     end
   end
 
-  # describe 'sad path' do
-  #   it 'returns an error response when no match is found' do
-  #     Contact.destroy_all
-  #     contact = create_list(:contact, 20)
-  #     contact2 = create(:contact, name: "chicken little")
-  #
-  #     get "/api/v1/contacts/find?name=!!!!"
-  #
-  #     result = JSON.parse(response.body, symbolize_names: true)
-  #
-  #     expect(response.status).to eq(400)
-  #     expect(result).to have_key(:data)
-  #   end
-  #
-  #   it 'returns an error response when no name param is given' do
-  #     get "/api/v1/contacts/find"
-  #
-  #     result = JSON.parse(response.body, symbolize_names: true)
-  #
-  #     expect(response.status).to eq(400)
-  #     expect(result).to have_key(:data)
-  #   end
-  # end
+  describe 'sad path' do
+    it 'returns an error response when no match is found' do
+      Contact.destroy_all
+      contact = create_list(:contact, 20)
+      contact2 = create(:contact, name: "chicken little")
+
+      get "/api/v1/contacts/search?name=!!!!"
+
+      result = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(400)
+      expect(result).to have_key(:error)
+      expect(result[:error]).to eq("Name does not exist")
+    end
+
+    it 'returns an error response when no name param is given' do
+      get "/api/v1/contacts/search"
+
+      result = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(400)
+      expect(result).to have_key(:error)
+      expect(result[:error]).to eq("Name cannot be blank")
+    end
+  end
 end
