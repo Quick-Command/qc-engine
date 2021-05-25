@@ -689,7 +689,7 @@ The following is a depiction of our Database Schema
 }
 ```
 
-### Rassign a Contact to a Role
+### Reassign a Contact to a Role
 `PATCH  /api/v1/incidents/:incident_id/contacts/:contact_id`
 * Body
 ```json
