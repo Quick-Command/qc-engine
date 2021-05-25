@@ -31,4 +31,9 @@ class Contact < ApplicationRecord
     .select('roles.title')
     .where("lower(roles.title) LIKE ?", "%#{role_query.downcase}%")
   end
+
+  def self.search(search_term)
+    where("name ILIKE ?", "%#{search_term}%")
+    .order(:name)
+  end
 end
