@@ -70,6 +70,7 @@ The following is a depiction of our Database Schema
 | POST | /api/v1/incidents  | Create a new incident | [json](#create-a-incident) |
 | POST | /api/v1/contacts  | Create a new contact | [json](#create-a-contact) |
 | POST | /api/v1/incidents/:incident_id/contacts/:contact_id  | Assign a Contact to an role in an Incident | [json](#assign-a-contact-to-an-incident) |
+| PATCH | /api/v1/incidents/:incident_id/contacts/:contact_id  | Reassign a contact to a role in an Incident | [json](#reassign-a-contact-to-a-role) |
 | GET | /api/v1/contacts/:contact_id  | Get a contact's details | [json](#contact-details) |
 | GET | /api/v1/contacts?name=NAME  | Return contacts that match name query | [json](#search-contacts-name) |
 | GET | /api/v1/contacts?role=ROLE  | Return contacts that match role query | [json](#search-contact-role) |
@@ -687,6 +688,31 @@ The following is a depiction of our Database Schema
     ]
 }
 ```
+### Rassign a Contact to a Role
+`PATCH  /api/v1/incidents/:incident_id/contacts/:contact_id`
+```json
+  {"title": "Safety Officer"}
+```
+* Return
+```json
+    {
+      "data": {
+        "id": "1",
+        "type": "incident_contact",
+        "attributes": {
+            "name": "Aaron Marks",
+            "title": "Safety Officer",
+            "email": "AMarks@emailgov.com",
+            "phone_number": " (221)830-7361",
+            "city": "Denver",
+            "state": "CO",
+            "distance_miles": "20",
+            "distance_minutes": "40"
+        }
+    }
+  }
+```
+
 
 ## Built With
 - Ruby
