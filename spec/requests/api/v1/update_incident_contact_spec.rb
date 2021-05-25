@@ -55,14 +55,22 @@ RSpec.describe 'Update an Incident Contact Endpoint' do
         expect(result[:data][:attributes][:distance_minutes]).to be_a(String)
       end
     end
-    xdescribe 'sad path' do
+    describe 'sad path' do
       it 'cannot add a contact to an incident if there is no title' do
-        incident = create(:incident, active: true)
-        contact = create(:contact, job_title: "Safety Officer")
+        role_1 = create(:role, title: "Incident Commander")
+        incident = create(:incident)
+        incident_2 = create(:incident)
+        contact_1 = create(:contact, job_title: "Incident Commander")
+        contact_2 = create(:contact, job_title: "Incident Commander")
+        contact_1.roles << role_1
+        contact_2.roles << role_1
+
+        ic = IncidentContact.create({incident_id: incident.id, contact_id: contact_2.id, title: "Incident Commander"})
+
         incident_contact_params = ({ title: "" })
 
         headers = {"CONTENT_TYPE" => "application/json"}
-        post "/api/v1/incidents/#{incident.id}/contacts/#{contact.id}", headers: headers, params: JSON.generate(incident_contact_params)
+        patch "/api/v1/incidents/#{incident.id}/contacts/#{contact_2.id}", headers: headers, params: JSON.generate(incident_contact_params)
 
         error = JSON.parse(response.body, symbolize_names: true)
         error_message = "Title must be assigned"
@@ -72,11 +80,20 @@ RSpec.describe 'Update an Incident Contact Endpoint' do
         expect(error[:error]).to eq("#{error_message}")
       end
       it 'cannot add a contact to an incident if the incident does not exist' do
-        contact = create(:contact, job_title: "Safety Officer")
-        incident_contact_params = ({ title: "" })
+        role_1 = create(:role, title: "Incident Commander")
+        incident = create(:incident)
+        incident_2 = create(:incident)
+        contact_1 = create(:contact, job_title: "Incident Commander")
+        contact_2 = create(:contact, job_title: "Incident Commander")
+        contact_1.roles << role_1
+        contact_2.roles << role_1
+
+        ic = IncidentContact.create({incident_id: incident.id, contact_id: contact_2.id, title: "Incident Commander"})
+
+        incident_contact_params = ({ title: "Incident Commander" })
 
         headers = {"CONTENT_TYPE" => "application/json"}
-        post "/api/v1/incidents/12387123897129/contacts/#{contact.id}", headers: headers, params: JSON.generate(incident_contact_params)
+        patch "/api/v1/incidents/8746315193845/contacts/#{contact_2.id}", headers: headers, params: JSON.generate(incident_contact_params)
 
         error = JSON.parse(response.body, symbolize_names: true)
         error_message = "Incident does not exist"
@@ -86,11 +103,20 @@ RSpec.describe 'Update an Incident Contact Endpoint' do
         expect(error[:error]).to eq("#{error_message}")
       end
       it 'cannot add a contact to an incident if the contact does not exist' do
-        incident = create(:incident, active: true)
-        incident_contact_params = ({ title: "Safety Officer" })
+        role_1 = create(:role, title: "Incident Commander")
+        incident = create(:incident)
+        incident_2 = create(:incident)
+        contact_1 = create(:contact, job_title: "Incident Commander")
+        contact_2 = create(:contact, job_title: "Incident Commander")
+        contact_1.roles << role_1
+        contact_2.roles << role_1
+
+        ic = IncidentContact.create({incident_id: incident.id, contact_id: contact_2.id, title: "Incident Commander"})
+
+        incident_contact_params = ({ title: "Incident Commander" })
 
         headers = {"CONTENT_TYPE" => "application/json"}
-        post "/api/v1/incidents/#{incident.id}/contacts/7812348971239", headers: headers, params: JSON.generate(incident_contact_params)
+        patch "/api/v1/incidents/#{incident.id}/contacts/87346528345", headers: headers, params: JSON.generate(incident_contact_params)
 
         error = JSON.parse(response.body, symbolize_names: true)
         error_message = "Contact does not exist"
@@ -107,7 +133,7 @@ RSpec.describe 'Update an Incident Contact Endpoint' do
         incident_contact_params = ({ title: "Safety Officer" })
 
         headers = {"CONTENT_TYPE" => "application/json"}
-        post "/api/v1/incidents/#{incident.id}/contacts/#{contact.id}", headers: headers, params: JSON.generate(incident_contact_params)
+        patch "/api/v1/incidents/#{incident.id}/contacts/#{contact.id}", headers: headers, params: JSON.generate(incident_contact_params)
 
         error = JSON.parse(response.body, symbolize_names: true)
         error_message = "Contact is assigned to another incident"
