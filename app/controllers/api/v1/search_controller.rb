@@ -29,4 +29,13 @@ class Api::V1::SearchController < ApplicationController
      render json: IncidentContactsSerializer.new(available_contacts)
    end
   end
+
+  def find_contact_by_name
+    if params[:name].blank? || params[:name].nil?
+      render json: { data: {} }, status: :bad_request
+    else
+      contact = ContactFacade.search(params[:name])
+      render json: ContactSerializer.new(contact)
+    end
+  end
 end
