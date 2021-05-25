@@ -721,16 +721,27 @@ The following is a depiction of our Database Schema
 ```json
 {
   "data": {
-      "id": "1",
-      "type": "contact",
-      "attributes": {
-          "name": "Mike Moon",
-          "email": "MMoon@emailgov.com",
-          "phone_number": "(651)563-1511",
-          "job_title": "Associate Planner",
-          "city": "Denver",
-          "state": "CO"
+    "id": "26",
+    "type": "contact",
+    "attributes": {
+      "name": "Mike Moon",
+      "email": "MMoon@emailgov.com",
+      "phone_number": " (651)563-1511",
+      "job_title": "Associate Planner",
+      "city": "Denver ",
+      "state": "CO",
+      "roles": {
+        "data": [
+          {
+            "id": "1",
+            "type": "role",
+            "attributes": {
+                            "title": "Incident Commander"
+                          }
+          }
+        ]
       }
+    }
   }
 }
 ```
