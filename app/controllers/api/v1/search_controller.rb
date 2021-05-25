@@ -12,7 +12,7 @@ class Api::V1::SearchController < ApplicationController
    elsif
      incident = incident_check.first
      available_contacts = []
-     a.each_with_index do |contact, index|
+     a.uniq.each_with_index do |contact, index|
       if contact.assigned_to_active_incident? == false
         attributes = {
           id: contact.id,
@@ -26,6 +26,7 @@ class Api::V1::SearchController < ApplicationController
         available_contacts << IncidentContactInfo.new(attributes)
       end
      end
+     available_contacts
      render json: IncidentContactsSerializer.new(available_contacts)
    end
   end
