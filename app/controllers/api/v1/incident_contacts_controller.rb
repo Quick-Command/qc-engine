@@ -12,7 +12,7 @@ class Api::V1::IncidentContactsController < ApplicationController
     elsif contact[0].assigned_to_active_incident? == true
       render json: {error: "Contact is assigned to another incident"}, status: 400
     elsif incident_contact.save
-      render json: IncidentContactSerializer.new(contact.first, {params: {distance_miles: distance_miles, distance_minutes: distance_minutes, title: incident_contact_params[:title]}})
+      render json: IncidentContactsSerializer.new(create_an_incident_contact)
     elsif incident_contact_params[:title] == nil || incident_contact_params[:title] == ""
       render json: {error: "Title must be assigned"}, status: 400
     end
@@ -23,20 +23,7 @@ class Api::V1::IncidentContactsController < ApplicationController
     if incident_contact_check.empty?
       render json: {error: "Contact is not assigned to incident"}, status: :not_found
     else
-      contact = Contact.find(incident_contact_params[:contact_id])
-      incident = Incident.find(incident_contact_params[:incident_id])
-      incident_contact = incident_contact_check.first
-      attributes = {
-        id: contact.id,
-        name: contact.name,
-        title: IncidentContact.contact_title(contact.id, incident.id),
-        email: contact.email,
-        phone_number: contact.phone_number,
-        contact_location: "#{contact.city}, #{contact.state}",
-        incident_location: "#{incident.city}, #{incident.state}"
-      }
-      new_contact_info = IncidentContactInfo.new(attributes)
-      render json: IncidentContactsSerializer.new(new_contact_info)
+      render json: IncidentContactsSerializer.new(create_an_incident_contact)
     end
   end
 
@@ -50,16 +37,7 @@ class Api::V1::IncidentContactsController < ApplicationController
     elsif
       incident = incident_check.first
       new_incident_contacts =incident_contacts.map do |contact|
-        attributes = {
-          id: contact.id,
-          name: contact.name,
-          title: IncidentContact.contact_title(contact.id, incident.id),
-          email: contact.email,
-          phone_number: contact.phone_number,
-          contact_location: "#{contact.city}, #{contact.state}",
-          incident_location: "#{incident.city}, #{incident.state}"
-        }
-        IncidentContactInfo.new(attributes)
+        create_an_incident_contact
       end
       render json: IncidentContactsSerializer.new(new_incident_contacts)
     end
@@ -71,15 +49,19 @@ class Api::V1::IncidentContactsController < ApplicationController
     params.permit(:title, :incident_id, :contact_id)
   end
 
-  def distance_miles
-    incident_location = Incident.find(incident_contact_params[:incident_id])
-    contact_location = Contact.find(incident_contact_params[:contact_id])
-    "20"
-  end
-
-  def distance_minutes
-    incident_location = Incident.find(incident_contact_params[:incident_id])
-    contact_location = Contact.find(incident_contact_params[:contact_id])
-    "40"
+  def create_an_incident_contact
+    contact = Contact.find(incident_contact_params[:contact_id])
+    incident = Incident.find(incident_contact_params[:incident_id])
+    attributes = {
+      id: contact.id,
+      name: contact.name,
+      title: IncidentContact.contact_title(contact.id, incident.id),
+      email: contact.email,
+      phone_number: contact.phone_number,
+      contact_location: "#{contact.city}, #{contact.state}",
+      incident_location: "#{incident.city}, #{incident.state}"
+    }
+    new_contact_info = IncidentContactInfo.new(attributes)
+    new_contact_info
   end
 end
