@@ -37,14 +37,6 @@ class Api::V1::IncidentsController < ApplicationController
     end
   end
 
-  def contacts
-    incident_contacts = Contact.joins(:incidents).where("incidents.id = ?", params[:incident_id])
-    if incident_contacts.empty?
-      render json: { error: "No contacts are assigned to this incident" }, status: :not_found
-    else
-      render json: IncidentContactSerializer.new(incident_contacts)
-    end
-  end
   private
 
   def incident_params
