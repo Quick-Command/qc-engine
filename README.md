@@ -746,6 +746,7 @@ The following is a depiction of our Database Schema
 }
 ```
 ## Get Weather Data for Incident
+'GET api/v1/forecast?location=Denver,CO'
 ``` json
 {
   "data": {
