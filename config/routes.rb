@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get '/api/v1/incidents/:incident_id/contact_search', to: 'api/v1/search#contact_role_search'
   get '/api/v1/incidents/:incident_id/contacts', to: 'api/v1/incident_contacts#all_contacts_assigned_to_incident'
 
-
   namespace :api do
     namespace :v1 do
       resources :contacts, only: [:show, :create]

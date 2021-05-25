@@ -5,10 +5,10 @@ class Api::V1::SearchController < ApplicationController
   a = Contact.find_by_role(params[:role])
   incident_check = Incident.where(id: params[:incident_id])
 
-   if a.empty?
-     render json: {error: "No available contact with that role"}
-   elsif incident_check.empty?
-     render json: {error: "No incident exists with that id"}
+   if incident_check.empty?
+     render json: {error: "No incident exists with that id"}, status: :not_found
+   elsif a.empty?
+     render json: {error: "No available contact with that role"}, status: :not_found
    elsif
      incident = incident_check.first
      available_contacts = []
