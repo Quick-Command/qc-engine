@@ -15,4 +15,17 @@ RSpec.describe Contact, type: :model do
     it { should have_many(:contact_roles) }
     it { should have_many(:roles).through(:contact_roles) }
   end
+
+  describe "class methods" do
+    it "::search" do
+      contact = create(:contact, name: "Karen Shmaren")
+      contact2 = create(:contact, name: "Joe Shmoe")
+      contact3 = create(:contact, name: "Jimmy Shmimmy")
+
+      search_term = 'Shma'
+
+      expect(Contact.search(search_term).length).to eq(1)
+      expect(Contact.search(search_term).first.name).to eq(contact.name)
+    end
+  end
 end
