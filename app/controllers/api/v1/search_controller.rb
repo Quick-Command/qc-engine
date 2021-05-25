@@ -32,10 +32,14 @@ class Api::V1::SearchController < ApplicationController
 
   def find_contact_by_name
     if params[:name].blank? || params[:name].nil?
-      render json: { data: {} }, status: :bad_request
+      render json: { error: "Name cannot be blank" }, status: :bad_request
     else
       contact = ContactFacade.search(params[:name])
-      render json: ContactSerializer.new(contact)
+      if contact.nil?
+        render json: { error: "Name does not exist" }, status: :bad_request
+      else
+        render json: ContactSerializer.new(contact)
+      end
     end
   end
 end
