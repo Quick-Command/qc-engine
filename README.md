@@ -745,7 +745,6 @@ The following is a depiction of our Database Schema
   }
 }
 ```
-## Future JSON Responses
 ## Get Weather Data for Incident
 ``` json
 {
