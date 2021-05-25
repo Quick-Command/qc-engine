@@ -745,8 +745,29 @@ The following is a depiction of our Database Schema
   }
 }
 ```
-
-
+## Future JSON Responses
+## Get Weather Data for Incident
+``` json
+{
+  "data": {
+      "id": 1,
+      "type": "forecast",
+      "attributes": {
+          "date": "2021-05-24",
+          "sunrise": "2021-05-24 11:38:13 +0000",
+          "sunset": "2021-05-25 02:15:45 +0000",
+          "min_temp": 49.78,
+          "max_temp": 73.44,
+          "humidity": 22,
+          "wind_speed": 11.12,
+          "wind_deg": 71,
+          "wind_gust": 9.75,
+          "conditions": "clear sky",
+          "precipitation": 0
+          }
+      }
+  }
+```
 ## Built With
 - Ruby
 - Rails
