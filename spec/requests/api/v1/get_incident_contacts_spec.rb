@@ -63,7 +63,7 @@ RSpec.describe 'Get an Incident Contacts Endpoint' do
 
       expect(response.status).to eq(404)
       expect(result).to be_a(Hash)
-      expect(result[:error]).to eq("No contacts are assigned to this incident")
+      expect(result[:error]).to eq("The incident does not exist for the given ID")
     end
   end
 end
