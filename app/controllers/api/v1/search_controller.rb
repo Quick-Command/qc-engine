@@ -1,7 +1,6 @@
 class Api::V1::SearchController < ApplicationController
 
   def contact_role_search
-  # unavailable_contacts = Contact.contacts_assigned_to_active_incidents
   a = Contact.find_by_role(params[:role])
   incident_check = Incident.where(id: params[:incident_id])
 
