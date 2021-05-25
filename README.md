@@ -71,7 +71,7 @@ The following is a depiction of our Database Schema
 | POST | /api/v1/contacts  | Create a new contact | [json](#create-a-contact) |
 | POST | /api/v1/incidents/:incident_id/contacts/:contact_id  | Assign a Contact to an role in an Incident | [json](#assign-a-contact-to-an-incident) |
 | GET | /api/v1/contacts/:contact_id  | Get a contact's details | [json](#contact-details) |
-| GET | /api/v1/contacts?name=NAME  | Return contacts that match name query | [json](#search-contacts-name) |
+| GET | /api/v1/contacts/search?name=NAME  | Return contacts that match name query | [json](#search-contacts-name) |
 | GET | /api/v1/contacts?role=ROLE  | Return contacts that match role query | [json](#search-contact-role) |
 
 ## Types of Incidents (an incident can be one type)
@@ -685,6 +685,25 @@ The following is a depiction of our Database Schema
             }
         }
     ]
+}
+```
+## Search Contacts by Name
+`GET /api/v1/contacts/search?name=Mike`
+
+```json
+{
+  "data": {
+      "id": "1",
+      "type": "contact",
+      "attributes": {
+          "name": "Mike Moon",
+          "email": "MMoon@emailgov.com",
+          "phone_number": "(651)563-1511",
+          "job_title": "Associate Planner",
+          "city": "Denver",
+          "state": "CO"
+      }
+  }
 }
 ```
 
