@@ -7,6 +7,7 @@ RSpec.describe 'Get an Incident Contacts Endpoint' do
       role_2 = create(:role, title: "Safety Officer")
       role_3 = create(:role, title: "Fire Marshall")
       incident = create(:incident)
+      incident_2 = create(:incident)
       contact_1 = create(:contact, job_title: "Incident Commander")
       contact_2 = create(:contact, job_title: "Incident Commander")
       contact_3 = create(:contact, job_title: "Incident Commander")
@@ -44,15 +45,25 @@ RSpec.describe 'Get an Incident Contacts Endpoint' do
     end
   end
   describe 'sad path' do
-    xit 'cannot display and incident contact that does not exist' do
+    it 'cannot display and incident contact that does not exist' do
       incident = create(:incident, active: true)
       contact = create(:contact, job_title: "Safety Officer")
-      get "/api/v1/incidents/#{incident.id}/contacts/#{contact.id}"
+      get "/api/v1/incidents/#{incident.id}/contacts"
       result = JSON.parse(response.body, symbolize_names: true)
 
       expect(response.status).to eq(404)
       expect(result).to be_a(Hash)
-      expect(result[:error]).to eq("Contact is not assigned to incident")
+      expect(result[:error]).to eq("No contacts are assigned to this incident")
+    end
+    it 'errors when an incorrect id is given for an incident' do
+      incident = create(:incident, active: true)
+      contact = create(:contact, job_title: "Safety Officer")
+      get "/api/v1/incidents/1238752/contacts"
+      result = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(404)
+      expect(result).to be_a(Hash)
+      expect(result[:error]).to eq("No contacts are assigned to this incident")
     end
   end
 end

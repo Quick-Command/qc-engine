@@ -56,7 +56,7 @@ RSpec.describe "Search for a contact by role" do
 
       get "/api/v1/incidents/#{incident.id}/contact_search?role=ComM"
       expect(response).to be_successful
-      
+
       contacts = JSON.parse(response.body, symbolize_names:true)
 
       expect(contacts).to be_a(Hash)
@@ -73,6 +73,54 @@ RSpec.describe "Search for a contact by role" do
       expect(contact_ids.include?(contact_3.id)).to eq(false)
       expect(contact_ids.include?(contact_4.id)).to eq(false)
       expect(contact_ids.include?(contact_5.id)).to eq(false)
+    end
+  end
+  describe "sad path" do
+    it "should return an error if there are no matches" do
+      role_1 = create(:role, title: "Incident Commander")
+      role_2 = create(:role, title: "Safety Officer")
+      incident = create(:incident, active: true)
+      contact_1 = create(:contact, job_title: "Incident Commander")
+      contact_2 = create(:contact, job_title: "Incident Commander")
+      contact_3 = create(:contact, job_title: "Incident Commander")
+      ic = IncidentContact.create({incident_id: incident.id, contact_id: contact_3.id, title: "Incident Commander"})
+      contact_4 = create(:contact, job_title: "Safety Officer")
+      contact_5 = create(:contact, job_title: "Safety Officer")
+      contact_1.roles << role_1
+      contact_2.roles << role_1
+      contact_3.roles << role_1
+      contact_4.roles << role_2
+      contact_5.roles << role_2
+
+      get "/api/v1/incidents/#{incident.id}/contact_search?role=AUSVUWENCVAOIEUNCE"
+      result = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(404)
+      expect(result).to be_a(Hash)
+      expect(result[:error]).to eq("No available contact with that role")
+    end
+    it "should return an error if there is no incident with that id" do
+      role_1 = create(:role, title: "Incident Commander")
+      role_2 = create(:role, title: "Safety Officer")
+      incident = create(:incident, active: true)
+      contact_1 = create(:contact, job_title: "Incident Commander")
+      contact_2 = create(:contact, job_title: "Incident Commander")
+      contact_3 = create(:contact, job_title: "Incident Commander")
+      ic = IncidentContact.create({incident_id: incident.id, contact_id: contact_3.id, title: "Incident Commander"})
+      contact_4 = create(:contact, job_title: "Safety Officer")
+      contact_5 = create(:contact, job_title: "Safety Officer")
+      contact_1.roles << role_1
+      contact_2.roles << role_1
+      contact_3.roles << role_1
+      contact_4.roles << role_2
+      contact_5.roles << role_2
+
+      get "/api/v1/incidents/12389745378236/contact_search?role=AUSVUWENCVAOIEUNCE"
+      result = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response.status).to eq(404)
+      expect(result).to be_a(Hash)
+      expect(result[:error]).to eq("No incident exists with that id")
     end
   end
 end
