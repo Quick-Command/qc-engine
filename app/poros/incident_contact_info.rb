@@ -15,12 +15,17 @@ class IncidentContactInfo
 
   def calculate_distance_miles
     #@incident_location - @contact_location
-    [*1..100].sample.to_s
+    # [*1..100].sample.to_s
+    distance = DistanceFacade.get_distance(@incident_location, @contact_location )
+    distance.distance_in_miles.to_s
   end
 
   def calculate_distance_minutes
     #@incident_location - @contact_location
-    [*1..100].sample.to_s
+    # [*1..100].sample.to_s
+    distance = DistanceFacade.get_distance(@incident_location, @contact_location )
+    drive_time_in_minutes = (distance.drive_time.split[0].to_i * 60) + distance.drive_time.split[2].to_i
+    drive_time_in_minutes.to_s
   end
 
   def city
