@@ -50,6 +50,9 @@ To get the web application running, please follow these directions to set up you
   - [Repo](https://github.com/Quick-Command/weather_service) | [Heroku](https://open-weather-service.herokuapp.com/)
 
 ## Service Oriented Architecture
+  QuickCommand Project Design
+<img width="977" alt="Screen Shot 2021-05-27 at 9 05 26 AM" src="https://user-images.githubusercontent.com/23460878/119854176-7929e680-bed6-11eb-8c27-31f89c59aa62.png">
+
 
 ## DB Schema
 The following is a depiction of our Database Schema
